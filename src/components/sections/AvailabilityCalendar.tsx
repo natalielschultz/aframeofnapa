@@ -131,9 +131,16 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
       return;
     }
     setSelectedCheckIn(dateStr);
+    const checkOut = addDays(dateStr, MIN_NIGHTS);
+    const total = calculateTotal(dateStr);
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "dates_selected", {
+        check_in: dateStr,
+        check_out: checkOut,
+        estimated_total: total,
+      });
+    }
     if (onDatesSelect) {
-      const checkOut = addDays(dateStr, MIN_NIGHTS);
-      const total = calculateTotal(dateStr);
       onDatesSelect(dateStr, checkOut, total);
     }
   }

@@ -3,6 +3,7 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -55,6 +56,7 @@ export default function RootLayout({
         <link rel="alternate" href="/llms.txt" type="text/plain" />
       </head>
       <body className="min-h-full flex flex-col">
+        <GoogleAnalytics />
         <Navbar />
         <main className="flex-1 pt-[72px]">{children}</main>
         <Footer />
