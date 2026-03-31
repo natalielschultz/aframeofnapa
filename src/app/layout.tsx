@@ -16,9 +16,29 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "A-Frame of Napa — Luxury Monthly Retreat on Mount Veeder, Napa Valley",
+  title: "A-Frame of Napa — Luxury Monthly Retreat on Mount Veeder",
   description:
-    "A private mountaintop sanctuary hidden among ancient redwoods at the summit of Mount Veeder, Napa Valley. Monthly luxury retreat with hot tub, sauna, and panoramic views.",
+    "Private mountaintop sanctuary among ancient redwoods at Mount Veeder, Napa Valley. Restored 1969 A-frame with hot tub, sauna, and panoramic views.",
+  metadataBase: new URL("https://aframeofnapa.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "A-Frame of Napa",
+    title: "A-Frame of Napa — Luxury Monthly Retreat on Mount Veeder",
+    description:
+      "Private mountaintop sanctuary among ancient redwoods at Mount Veeder, Napa Valley. Restored 1969 A-frame with hot tub, sauna, and panoramic views.",
+    images: [{ url: "/images/deck-sunset-firepit.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "A-Frame of Napa — Luxury Monthly Retreat on Mount Veeder",
+    description:
+      "Private mountaintop sanctuary among ancient redwoods at Mount Veeder, Napa Valley. Restored 1969 A-frame with hot tub, sauna, and panoramic views.",
+    images: ["/images/deck-sunset-firepit.jpg"],
+  },
 };
 
 export default function RootLayout({

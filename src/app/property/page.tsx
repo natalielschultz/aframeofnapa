@@ -5,9 +5,26 @@ import FadeIn from "@/components/animation/FadeIn";
 import CTABanner from "@/components/sections/CTABanner";
 import Image from "next/image";
 import { AMENITIES, PROPERTY } from "@/lib/constants";
+import { getVacationRentalSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "The Property — Restored 1969 A-Frame Cabin | A-Frame of Napa",
+  description:
+    "Tour a fully restored 1969 A-frame cabin on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, sunken conversation pit, and panoramic Napa Valley views.",
+  alternates: { canonical: "/property" },
+  openGraph: {
+    title: "The Property — Restored 1969 A-Frame Cabin | A-Frame of Napa",
+    description:
+      "Tour a fully restored 1969 A-frame cabin on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, and panoramic Napa Valley views.",
+    images: [{ url: "/images/aframe-exterior-foggy.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Property — Restored 1969 A-Frame Cabin | A-Frame of Napa",
+    description:
+      "Tour a fully restored 1969 A-frame cabin on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, and panoramic Napa Valley views.",
+    images: ["/images/aframe-exterior-foggy.jpg"],
+  },
 };
 
 const quickSpecs = [
@@ -83,6 +100,14 @@ const galleryItems = [
 export default function PropertyPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getVacationRentalSchema()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("The Property", "/property")) }}
+      />
       {/* 1. Hero */}
       <Hero
         image="/images/aframe-exterior-foggy.jpg"

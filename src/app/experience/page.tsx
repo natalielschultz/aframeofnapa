@@ -6,9 +6,26 @@ import FadeIn from "@/components/animation/FadeIn";
 import CTABanner from "@/components/sections/CTABanner";
 import Image from "next/image";
 import Link from "next/link";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "The Experience — Trails, Wellness & Wine Country | A-Frame of Napa",
+  description:
+    "Discover daily life on Mount Veeder: private meditation trail to Enchanted Hills Waterfall, outdoor hot tub, infrared sauna, and Napa Valley wine country at your doorstep.",
+  alternates: { canonical: "/experience" },
+  openGraph: {
+    title: "The Experience — Trails, Wellness & Wine Country | A-Frame of Napa",
+    description:
+      "Discover daily life on Mount Veeder: private meditation trail, outdoor hot tub, infrared sauna, and Napa Valley wine country at your doorstep.",
+    images: [{ url: "/images/sunrise-through-window.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Experience — Trails, Wellness & Wine Country | A-Frame of Napa",
+    description:
+      "Discover daily life on Mount Veeder: private meditation trail, outdoor hot tub, infrared sauna, and wine country at your doorstep.",
+    images: ["/images/sunrise-through-window.jpg"],
+  },
 };
 
 const timeline = [
@@ -84,6 +101,10 @@ const wellnessSuite = [
 export default function ExperiencePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("The Experience", "/experience")) }}
+      />
       {/* 1. Hero */}
       <Hero
         image="/images/sunrise-through-window.jpg"

@@ -3,9 +3,26 @@ import Hero from "@/components/sections/Hero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animation/FadeIn";
 import CTABanner from "@/components/sections/CTABanner";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Mount Veeder, Napa Valley — Location & Access | A-Frame of Napa",
+  description:
+    "Located at the summit of Mount Veeder, 15 minutes from downtown Napa. Proximity to wineries, restaurants, and San Francisco. Directions and travel tips.",
+  alternates: { canonical: "/location" },
+  openGraph: {
+    title: "Mount Veeder, Napa Valley — Location & Access | A-Frame of Napa",
+    description:
+      "Located at the summit of Mount Veeder, 15 minutes from downtown Napa. Proximity to wineries, restaurants, and San Francisco.",
+    images: [{ url: "/images/sunset-silhouette-window.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mount Veeder, Napa Valley — Location & Access | A-Frame of Napa",
+    description:
+      "Located at the summit of Mount Veeder, 15 minutes from downtown Napa.",
+    images: ["/images/sunset-silhouette-window.jpg"],
+  },
 };
 
 const proximityData = [
@@ -44,6 +61,10 @@ const proximityData = [
 export default function LocationPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("Mount Veeder", "/location")) }}
+      />
       <Hero
         image="/images/sunset-silhouette-window.jpg"
         title="Mount Veeder"

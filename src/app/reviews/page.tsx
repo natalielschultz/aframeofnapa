@@ -4,9 +4,26 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animation/FadeIn";
 import CTABanner from "@/components/sections/CTABanner";
 import { REVIEWS } from "@/lib/constants";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Guest Reviews — 4.88 Rating | A-Frame of Napa",
+  description:
+    "Read verified guest reviews of the A-Frame of Napa. Rated 4.88 out of 5 from 16 Airbnb reviews. See what guests say about this luxury Mount Veeder retreat.",
+  alternates: { canonical: "/reviews" },
+  openGraph: {
+    title: "Guest Reviews — 4.88 Rating | A-Frame of Napa",
+    description:
+      "Rated 4.88 out of 5 from 16 verified Airbnb reviews. See what guests say about this luxury Mount Veeder retreat.",
+    images: [{ url: "/images/hanging-chair-sunlit.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Guest Reviews — 4.88 Rating | A-Frame of Napa",
+    description:
+      "Rated 4.88 out of 5 from 16 verified Airbnb reviews.",
+    images: ["/images/hanging-chair-sunlit.jpg"],
+  },
 };
 
 function StarRating({ rating }: { rating: number }) {
@@ -24,6 +41,10 @@ export default function ReviewsPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("Guest Reviews", "/reviews")) }}
+      />
       <Hero
         image="/images/hanging-chair-sunlit.jpg"
         title="What Guests Say"

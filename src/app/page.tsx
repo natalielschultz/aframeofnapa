@@ -9,6 +9,7 @@ import CTABanner from "@/components/sections/CTABanner";
 import Image from "next/image";
 import Link from "next/link";
 import { REVIEWS, PRICING, PROPERTY } from "@/lib/constants";
+import { getLodgingBusinessSchema } from "@/lib/structured-data";
 
 const pillars = [
   {
@@ -57,6 +58,10 @@ export default function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLodgingBusinessSchema()) }}
+      />
       {/* 1. Hero */}
       <Hero
         image="/images/deck-sunset-firepit.jpg"

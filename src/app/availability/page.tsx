@@ -5,9 +5,26 @@ import FadeIn from "@/components/animation/FadeIn";
 import InquiryForm from "@/components/sections/InquiryForm";
 import FAQ from "@/components/sections/FAQ";
 import { PRICING } from "@/lib/constants";
+import { getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Availability & Monthly Rates | A-Frame of Napa",
+  description:
+    "Check availability and seasonal rates for the A-Frame of Napa. Monthly stays from $8,000–$16,000. Peak season April–November, off-peak December–March. Book direct.",
+  alternates: { canonical: "/availability" },
+  openGraph: {
+    title: "Availability & Monthly Rates | A-Frame of Napa",
+    description:
+      "Check availability and seasonal rates for the A-Frame of Napa. Monthly stays from $8,000–$16,000. Book direct for the best experience.",
+    images: [{ url: "/images/living-room-full-chandelier.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Availability & Monthly Rates | A-Frame of Napa",
+    description:
+      "Monthly stays from $8,000–$16,000. Peak season April–November, off-peak December–March.",
+    images: ["/images/living-room-full-chandelier.jpg"],
+  },
 };
 
 const calendarMonths = [
@@ -57,6 +74,14 @@ export default function AvailabilityPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getFAQSchema()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("Availability & Rates", "/availability")) }}
+      />
       <Hero
         image="/images/living-room-full-chandelier.jpg"
         title="Availability & Rates"
