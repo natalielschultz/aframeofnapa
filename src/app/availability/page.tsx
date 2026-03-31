@@ -5,7 +5,7 @@ import FadeIn from "@/components/animation/FadeIn";
 import AvailabilityContent from "@/components/sections/AvailabilityContent";
 import FAQ from "@/components/sections/FAQ";
 import { PRICING } from "@/lib/constants";
-import { getAvailability } from "@/lib/availability";
+import { getDayAvailability } from "@/lib/availability";
 import { getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -56,7 +56,7 @@ function getCurrentSeasonName(): string {
 
 export default async function AvailabilityPage() {
   const currentSeason = getCurrentSeasonName();
-  const availability = await getAvailability();
+  const days = await getDayAvailability();
 
   return (
     <>
@@ -157,7 +157,7 @@ export default async function AvailabilityPage() {
       </section>
 
       {/* Calendar + Inquiry Form (client interactive) */}
-      <AvailabilityContent months={availability} />
+      <AvailabilityContent days={days} />
 
       {/* How It Works */}
       <section className="bg-white py-20 md:py-28">

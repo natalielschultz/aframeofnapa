@@ -73,7 +73,7 @@ export default function InquiryForm({ selectedMonth }: InquiryFormProps) {
       newErrors.email = "Please enter a valid email";
     }
     if (!formData.months.trim()) {
-      newErrors.months = "Please specify your desired months";
+      newErrors.months = "Please specify your desired dates";
     }
     if (!formData.guests.trim()) {
       newErrors.guests = "Number of guests is required";
@@ -217,7 +217,7 @@ export default function InquiryForm({ selectedMonth }: InquiryFormProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="months" className={labelClasses}>
-                    Desired Months *
+                    Desired Dates *
                   </label>
                   <input
                     id="months"
@@ -225,7 +225,7 @@ export default function InquiryForm({ selectedMonth }: InquiryFormProps) {
                     type="text"
                     value={formData.months}
                     onChange={handleChange}
-                    placeholder="e.g. June - August 2026"
+                    placeholder="e.g. June 15 – July 14, 2026"
                     className={inputClasses}
                   />
                   {errors.months && (
