@@ -18,6 +18,7 @@ export interface DayAvailability {
 // ---------------------------------------------------------------------------
 
 const HOSPITABLE_BASE = "https://public.api.hospitable.com/v2";
+const PROPERTY_ID = "cd9e9e60-4eb2-4c40-89dc-8ea075569814";
 
 interface HospitableCalendarDay {
   date: string;
@@ -26,26 +27,6 @@ interface HospitableCalendarDay {
   min_stay: number;
   closed_for_checkin: boolean;
   closed_for_checkout: boolean;
-}
-
-async function fetchHospitablePropertyId(): Promise<string | null> {
-  const key = process.env.HOSPITABLE_API_KEY;
-  if (!key) return null;
-
-  try {
-    const res = await fetch(`${HOSPITABLE_BASE}/properties?per_page=1`, {
-      headers: {
-        Authorization: `Bearer ${key}`,
-        Accept: "application/json",
-      },
-      next: { revalidate: 86400 }, // cache property ID for 24h
-    });
-    if (!res.ok) return null;
-    const json = await res.json();
-    return json.data?.[0]?.id ?? null;
-  } catch {
-    return null;
-  }
 }
 
 async function fetchHospitableCalendar(
@@ -69,7 +50,7 @@ async function fetchHospitableCalendar(
     );
     if (!res.ok) return [];
     const json = await res.json();
-    const days: HospitableCalendarDay[] = json.data ?? [];
+    const days: HospitableCalendarDay[] = json.data?.days ?? [];
 
     return days.map((d) => ({
       date: d.date,
@@ -138,15 +119,15 @@ function expandToDays(months: MonthAvailability[]): DayAvailability[] {
 
 export async function getDayAvailability(): Promise<DayAvailability[]> {
   // Try Hospitable API
-  const propertyId = await fetchHospitablePropertyId();
-  if (propertyId) {
+  const key = process.env.HOSPITABLE_API_KEY;
+  if (key) {
     const today = new Date();
     const startDate = today.toISOString().split("T")[0];
     const endDate = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())
       .toISOString()
       .split("T")[0];
 
-    const days = await fetchHospitableCalendar(propertyId, startDate, endDate);
+    const days = await fetchHospitableCalendar(PROPERTY_ID, startDate, endDate);
     if (days.length > 0) return days;
   }
 
