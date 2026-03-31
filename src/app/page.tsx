@@ -38,10 +38,7 @@ const pillars = [
 ];
 
 const stats = [
-  { end: 2, suffix: "", label: "Acres" },
-  { end: 2000, suffix: "", label: "Sq Ft" },
-  { end: 3, suffix: "", label: "Bedrooms" },
-  { end: 31, suffix: "", label: "Day Minimum" },
+  { end: 3, suffix: " BR", label: "Bedrooms" },
 ];
 
 const signatureMoments = [
@@ -55,7 +52,7 @@ export default function Home() {
 
   // Determine current season based on month
   const month = new Date().getMonth();
-  const seasonIndex = month >= 5 && month <= 10 ? 0 : 1; // June–Nov = Peak, Dec–May = Off-Peak
+  const seasonIndex = month >= 3 && month <= 10 ? 0 : 1; // April–Nov = Peak, Dec–March = Off-Peak
   const currentSeason = PRICING.seasons[seasonIndex];
 
   return (
@@ -122,7 +119,7 @@ export default function Home() {
       {/* 4. Key Stats Bar */}
       <section className="bg-ink py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-4 text-center">
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-2">
                 <span className="font-serif text-4xl md:text-5xl text-brass">
@@ -133,7 +130,38 @@ export default function Home() {
                 </span>
               </div>
             ))}
-            {/* Rating displayed as static since CountUp rounds to integers */}
+            <div className="flex flex-col items-center gap-2">
+              <span className="font-serif text-4xl md:text-5xl text-brass">
+                {PROPERTY.bathrooms} BA
+              </span>
+              <span className="font-sans text-xs uppercase tracking-[0.2em] text-parchment/70">
+                Bathrooms
+              </span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <span className="font-serif text-4xl md:text-5xl text-brass">
+                {PROPERTY.acres} Acres
+              </span>
+              <span className="font-sans text-xs uppercase tracking-[0.2em] text-parchment/70">
+                Land
+              </span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <span className="font-serif text-4xl md:text-5xl text-brass">
+                Est. 1969
+              </span>
+              <span className="font-sans text-xs uppercase tracking-[0.2em] text-parchment/70">
+                Year Built
+              </span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <span className="font-serif text-4xl md:text-5xl text-brass">
+                2026
+              </span>
+              <span className="font-sans text-xs uppercase tracking-[0.2em] text-parchment/70">
+                Renovated
+              </span>
+            </div>
             <div className="flex flex-col items-center gap-2">
               <span className="font-serif text-4xl md:text-5xl text-brass">
                 {PROPERTY.rating}

@@ -49,7 +49,7 @@ const steps = [
 // Determine current season based on month (March 2026 context)
 function getCurrentSeasonName(): string {
   const month = new Date().getMonth();
-  return month >= 5 && month <= 10 ? "Peak Season" : "Off-Peak";
+  return month >= 3 && month <= 10 ? "Peak Season" : "Off-Peak";
 }
 
 export default function AvailabilityPage() {

@@ -33,13 +33,13 @@ export const PRICING = {
   seasons: [
     {
       name: "Peak Season",
-      months: "June–Nov",
-      range: "$11,000–$16,000",
+      months: "April–Nov",
+      range: "$12,000–$16,000",
       description: "Summer through harvest. The most sought-after months in Napa Valley.",
     },
     {
       name: "Off-Peak",
-      months: "Dec–May",
+      months: "Dec–March",
       range: "$8,000–$11,000",
       description: "Quieter months on the mountain. Ideal for remote work, creative retreats, and winter wellness.",
     },
