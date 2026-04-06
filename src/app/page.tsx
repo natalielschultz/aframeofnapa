@@ -147,7 +147,7 @@ export default function Home() {
               </span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <span className="font-serif text-4xl md:text-5xl text-brass">
+              <span className="font-serif text-3xl md:text-4xl text-brass whitespace-nowrap">
                 Est. 1969
               </span>
               <span className="font-sans text-xs uppercase tracking-[0.2em] text-parchment/70">
