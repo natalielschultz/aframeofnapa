@@ -29,7 +29,7 @@ export default function ConciergeChat() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, loading]);
 
   async function handleSend() {
     const text = input.trim();
@@ -90,45 +90,108 @@ export default function ConciergeChat() {
 
   return (
     <>
-      {/* Floating button */}
-      <button
-        onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-brass px-5 py-3 font-sans text-sm font-medium text-ink shadow-lg transition-all hover:bg-brass-light hover:shadow-xl"
-        aria-label={open ? "Close concierge chat" : "Chat with Concierge"}
-      >
-        {open ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      {/* Collapsed: sticky bottom bar, centered */}
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="fixed z-50 flex items-center gap-2.5 font-serif uppercase"
+          style={{
+            bottom: "5px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            backgroundColor: "#1B4D2E",
+            borderRadius: "12px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+            padding: "14px 24px",
+            maxWidth: "calc(100% - 40px)",
+            whiteSpace: "nowrap",
+          }}
+          aria-label="Chat with Concierge"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#D4A574" stroke="none">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
-        )}
-        {open ? "Close" : "Chat with Concierge"}
-      </button>
+          <span
+            style={{
+              fontWeight: 300,
+              fontSize: "14px",
+              letterSpacing: "1.5px",
+              color: "#F5F2ED",
+            }}
+          >
+            Chat with Concierge
+          </span>
+        </button>
+      )}
 
-      {/* Chat panel */}
+      {/* Expanded: full-width panel from bottom */}
       {open && (
-        <div className="fixed bottom-20 right-6 z-50 flex w-[360px] max-w-[calc(100vw-2rem)] flex-col rounded-2xl border border-charcoal/10 bg-white shadow-2xl overflow-hidden"
-          style={{ height: "min(500px, calc(100vh - 8rem))" }}
+        <div
+          className="fixed z-50 flex flex-col"
+          style={{
+            bottom: 0,
+            left: 0,
+            right: 0,
+            maxHeight: "80vh",
+            borderRadius: "12px 12px 0 0",
+            overflow: "hidden",
+            boxShadow: "0 -4px 30px rgba(0,0,0,0.15)",
+          }}
         >
           {/* Header */}
-          <div className="bg-ink px-5 py-4">
-            <h3 className="font-serif text-sm font-light uppercase tracking-[2px] text-parchment">
-              Concierge
-            </h3>
-            <p className="font-sans text-xs text-parchment/60 mt-0.5">
-              Ask about the property, amenities, or local area
-            </p>
+          <div
+            className="flex items-center justify-between shrink-0"
+            style={{
+              backgroundColor: "#1B4D2E",
+              padding: "14px 24px",
+            }}
+          >
+            <div className="flex items-center gap-2.5">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A574" stroke="none">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              <span
+                className="font-serif uppercase"
+                style={{
+                  fontWeight: 300,
+                  fontSize: "13px",
+                  letterSpacing: "2px",
+                  color: "#F5F2ED",
+                }}
+              >
+                Concierge
+              </span>
+            </div>
+            <button
+              onClick={() => setOpen(false)}
+              className="transition-opacity"
+              style={{ color: "#F5F2ED", opacity: 0.7 }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+              aria-label="Close chat"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
           </div>
 
           {/* Messages */}
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3">
+          <div
+            ref={scrollRef}
+            className="flex-1 overflow-y-auto flex flex-col"
+            style={{
+              backgroundColor: "#F9F7F2",
+              padding: "16px 24px",
+              minHeight: "200px",
+              maxHeight: "50vh",
+              gap: "12px",
+            }}
+          >
             {messages.length === 0 && (
               <div className="text-center py-8">
-                <p className="font-sans text-sm text-text-muted">
+                <p className="font-sans" style={{ fontSize: "14px", color: "#8B9D83" }}>
                   Welcome! Ask me anything about the A-Frame — WiFi, hot tub, local restaurants, and more.
                 </p>
               </div>
@@ -139,11 +202,25 @@ export default function ConciergeChat() {
                 className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[80%] rounded-2xl px-4 py-2.5 font-sans text-sm leading-relaxed ${
-                    msg.role === "user"
-                      ? "bg-brass text-ink rounded-br-md"
-                      : "bg-surface text-text rounded-bl-md"
-                  }`}
+                  className="font-sans"
+                  style={{
+                    maxWidth: "85%",
+                    padding: "10px 14px",
+                    fontSize: "14px",
+                    lineHeight: 1.5,
+                    ...(msg.role === "user"
+                      ? {
+                          backgroundColor: "#1B4D2E",
+                          color: "#F5F2ED",
+                          borderRadius: "12px 12px 4px 12px",
+                        }
+                      : {
+                          backgroundColor: "#FFFFFF",
+                          color: "#4A4238",
+                          border: "1px solid #e8e4de",
+                          borderRadius: "12px 12px 12px 4px",
+                        }),
+                  }}
                 >
                   {msg.content}
                 </div>
@@ -151,7 +228,18 @@ export default function ConciergeChat() {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="max-w-[80%] rounded-2xl rounded-bl-md bg-surface px-4 py-2.5 font-sans text-sm text-text-muted italic">
+                <div
+                  className="font-sans italic"
+                  style={{
+                    maxWidth: "85%",
+                    padding: "10px 14px",
+                    fontSize: "14px",
+                    backgroundColor: "#FFFFFF",
+                    color: "#8B9D83",
+                    border: "1px solid #e8e4de",
+                    borderRadius: "12px 12px 12px 4px",
+                  }}
+                >
                   Thinking...
                 </div>
               </div>
@@ -160,26 +248,50 @@ export default function ConciergeChat() {
 
           {/* Input */}
           <form
-            onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-            className="border-t border-charcoal/10 p-3 flex gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSend();
+            }}
+            className="flex items-center gap-3 shrink-0"
+            style={{
+              backgroundColor: "#FFFFFF",
+              borderTop: "1px solid #e8e4de",
+              padding: "12px 24px 14px",
+            }}
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask a question..."
-              className="flex-1 rounded-full border border-charcoal/20 bg-parchment px-4 py-2.5 font-sans text-sm text-text placeholder:text-text-muted/60 outline-none focus:border-brass transition-colors"
+              className="flex-1 font-sans outline-none"
+              style={{
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                padding: "11px 14px",
+                fontSize: "14px",
+                color: "#4A4238",
+                backgroundColor: "#FFFFFF",
+              }}
+              onFocus={(e) => (e.currentTarget.style.borderColor = "#1B4D2E")}
+              onBlur={(e) => (e.currentTarget.style.borderColor = "#ddd")}
               disabled={loading}
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brass text-ink transition-colors hover:bg-brass-light disabled:opacity-40"
+              className="shrink-0 flex items-center justify-center transition-opacity disabled:opacity-40"
+              style={{
+                backgroundColor: "#1B4D2E",
+                borderRadius: "8px",
+                padding: "0 16px",
+                height: "42px",
+              }}
               aria-label="Send message"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5F2ED" strokeWidth="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
               </svg>
             </button>
           </form>

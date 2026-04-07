@@ -2,9 +2,7 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { verifyToken } from "@/lib/magic-link";
 import { getManualSections } from "@/lib/parse-manual";
-import Hero from "@/components/sections/Hero";
 import FadeIn from "@/components/animation/FadeIn";
-import CTABanner from "@/components/sections/CTABanner";
 import ConciergeChat from "@/components/sections/ConciergeChat";
 
 export const metadata: Metadata = {
@@ -35,26 +33,88 @@ export default async function ManualPage({
   const sections = await getManualSections();
 
   return (
-    <>
-      <Hero
-        image="/images/great-room-window-wall.jpg"
-        title="House Manual"
-        subtitle="Everything you need for a seamless stay on Mount Veeder"
-      />
+    <div className="manual-page min-h-screen">
+      {/* Hero */}
+      <div
+        className="text-center"
+        style={{ backgroundColor: "#1B4D2E", padding: "60px 24px" }}
+      >
+        <h1
+          className="font-serif uppercase leading-tight"
+          style={{
+            fontWeight: 100,
+            fontSize: "clamp(32px, 5vw, 48px)",
+            letterSpacing: "6px",
+            color: "#F5F2ED",
+          }}
+        >
+          House Manual
+        </h1>
+        <p
+          className="font-sans mt-4 mx-auto"
+          style={{
+            fontSize: "16px",
+            color: "#8B9D83",
+            maxWidth: "500px",
+          }}
+        >
+          Everything you need to feel at home on the mountain
+        </p>
+      </div>
 
-      {/* Nav chips */}
-      <div className="sticky top-[72px] z-30 bg-parchment border-b border-charcoal/10">
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <div
-            className="flex gap-2 md:gap-3 py-4 overflow-x-auto md:justify-center"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      {/* Table of Contents card */}
+      <div
+        className="mx-auto"
+        style={{
+          maxWidth: "720px",
+          marginTop: "-30px",
+          padding: "0 20px",
+        }}
+      >
+        <div
+          style={{
+            background: "#FFFFFF",
+            borderRadius: "8px",
+            padding: "32px 28px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+          }}
+        >
+          <h2
+            className="font-serif uppercase"
+            style={{
+              fontWeight: 300,
+              fontSize: "18px",
+              letterSpacing: "2px",
+              color: "#1B4D2E",
+              paddingBottom: "12px",
+              borderBottom: "2px solid #D4A574",
+              marginBottom: "20px",
+            }}
           >
-            {sections.map((s) => (
+            Contents
+          </h2>
+          <div
+            className="grid gap-x-6 gap-y-1.5"
+            style={{ gridTemplateColumns: "1fr 1fr" }}
+          >
+            {sections.map((s, i) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="whitespace-nowrap rounded-full px-4 py-2 text-xs uppercase tracking-[0.15em] font-sans font-medium transition-all duration-300 border shrink-0 bg-transparent text-brass border-brass/40 hover:border-brass hover:bg-brass/5"
+                className="flex items-center gap-2 py-1.5 font-sans transition-colors hover:text-[#1B4D2E]"
+                style={{ fontSize: "14px", color: "#4A4238" }}
               >
+                <span
+                  className="font-serif shrink-0"
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "1px",
+                    color: "#D4A574",
+                    width: "24px",
+                  }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 {s.title}
               </a>
             ))}
@@ -63,43 +123,80 @@ export default async function ManualPage({
       </div>
 
       {/* Sections */}
-      {sections.map((section, i) => {
-        const light = i % 2 === 1;
-        return (
-          <section
-            key={section.id}
-            id={section.id}
-            className={`py-16 md:py-20 ${light ? "bg-ink" : ""}`}
-          >
-            <div className="mx-auto max-w-4xl px-6 md:px-12">
-              <FadeIn>
+      <div
+        className="mx-auto"
+        style={{ maxWidth: "720px", padding: "48px 20px 48px" }}
+      >
+        <div className="flex flex-col" style={{ gap: "48px" }}>
+          {sections.map((section) => (
+            <FadeIn key={section.id}>
+              <section
+                id={section.id}
+                style={{
+                  background: "#FFFFFF",
+                  borderRadius: "8px",
+                  borderLeft: "3px solid #D4A574",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                  padding: "32px 28px",
+                }}
+              >
                 <h2
-                  className={`font-serif font-extralight uppercase tracking-[4px] text-[32px] md:text-5xl leading-tight ${light ? "text-parchment" : "text-ink"}`}
+                  className="font-serif uppercase"
+                  style={{
+                    fontWeight: 200,
+                    fontSize: "clamp(22px, 3vw, 28px)",
+                    letterSpacing: "4px",
+                    color: "#1B4D2E",
+                    marginBottom: "20px",
+                  }}
                 >
                   {section.title}
                 </h2>
                 <div
-                  className="bg-brass mt-4"
-                  style={{ width: 120, height: 1 }}
-                  aria-hidden="true"
-                />
-                <div
-                  className={`mt-8 font-sans text-base md:text-lg leading-relaxed manual-content ${light ? "manual-content-light" : ""}`}
+                  className="font-sans manual-content"
+                  style={{ fontSize: "16px" }}
                   dangerouslySetInnerHTML={{ __html: section.html }}
                 />
-              </FadeIn>
-            </div>
-          </section>
-        );
-      })}
+              </section>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
 
-      <CTABanner
-        headline="Questions? We're here to help"
-        buttonLabel="Contact Us"
-        buttonHref="/availability"
-      />
+      {/* Footer */}
+      <footer
+        className="text-center"
+        style={{
+          backgroundColor: "#1B4D2E",
+          padding: "40px 24px 110px",
+        }}
+      >
+        <p
+          className="font-serif uppercase"
+          style={{
+            fontWeight: 400,
+            fontSize: "14px",
+            letterSpacing: "3px",
+            color: "#F5F2ED",
+          }}
+        >
+          A-Frame of Napa
+        </p>
+        <p
+          className="font-sans mt-2"
+          style={{ fontSize: "16px", color: "#F5F2ED" }}
+        >
+          Mount Veeder, Napa Valley
+        </p>
+        <p
+          className="font-sans mt-3"
+          style={{ fontSize: "12px", color: "#8B9D83" }}
+        >
+          Last updated: April 2026
+        </p>
+      </footer>
 
       <ConciergeChat />
-    </>
+    </div>
   );
 }
