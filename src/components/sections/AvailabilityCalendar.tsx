@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { DayAvailability } from "@/lib/availability";
 import FadeIn from "@/components/animation/FadeIn";
@@ -66,20 +66,31 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
   const [direction, setDirection] = useState(0);
   const [selectedCheckIn, setSelectedCheckIn] = useState<string | null>(null);
   const [hoveredDate, setHoveredDate] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   const maxPage = Math.max(0, monthKeys.length - 2);
+
+  const step = isMobile ? 1 : 2;
 
   function goNext() {
     if (pageIndex < maxPage) {
       setDirection(1);
-      setPageIndex((p) => Math.min(p + 2, maxPage));
+      setPageIndex((p) => Math.min(p + step, maxPage));
     }
   }
 
   function goPrev() {
     if (pageIndex > 0) {
       setDirection(-1);
-      setPageIndex((p) => Math.max(p - 2, 0));
+      setPageIndex((p) => Math.max(p - step, 0));
     }
   }
 
@@ -182,16 +193,16 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
       const isPast = !info;
 
       let cellClasses =
-        "aspect-square flex flex-col items-center justify-center relative transition-all duration-300 ";
+        "aspect-square min-h-[44px] flex flex-col items-center justify-center relative transition-all duration-300 ";
 
       if (isCheckIn) {
         cellClasses +=
           "bg-ink text-parchment rounded-l-sm ";
       } else if (isCheckOut) {
         cellClasses +=
-          "bg-ink/5 rounded-r-sm ";
+          "bg-brass/20 border border-brass/40 rounded-r-sm ";
       } else if (isInRange) {
-        cellClasses += "bg-brass/8 ";
+        cellClasses += "bg-brass/20 border-y border-brass/30 ";
       } else {
         cellClasses += " ";
       }
@@ -214,9 +225,11 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
           aria-label={`${isAvailable ? (info?.dailyRate ? `$${info.dailyRate} per night` : "Available") : info?.status || "Unavailable"}, ${formatDateFull(dateStr)}`}
         >
           <span
-            className={`font-sans text-[13px] leading-none ${
+            className={`font-sans text-[15px] md:text-[13px] leading-none ${
               isCheckIn
                 ? "text-parchment font-medium"
+                : isInRange
+                ? "text-ink font-medium"
                 : isAvailable
                 ? "text-ink"
                 : "text-charcoal/25"
@@ -225,7 +238,7 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
             {d}
           </span>
           {isAvailable && info?.dailyRate && !isCheckIn && (
-            <span className="font-sans text-[9px] text-brass mt-0.5 leading-none">
+            <span className={`font-sans text-[10px] md:text-[9px] mt-0.5 leading-none ${isInRange ? "text-brass font-medium" : "text-brass"}`}>
               ${info.dailyRate}
             </span>
           )}
@@ -277,10 +290,10 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
   };
 
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className={`bg-white py-20 md:py-28 ${selectedCheckIn ? "pb-[140px] md:pb-28" : ""}`}>
       <div className="mx-auto max-w-5xl px-6 md:px-12">
         <FadeIn>
-          <div className="flex flex-col items-center gap-4 mb-16 text-center">
+          <div className="flex flex-col items-center gap-4 mb-10 md:mb-16 text-center">
             <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted">
               Select Your Dates
             </p>
@@ -306,7 +319,7 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
               type="button"
               onClick={goPrev}
               disabled={pageIndex === 0}
-              className="group p-2 transition-opacity duration-300 disabled:opacity-0"
+              className="group p-3 md:p-2 transition-opacity duration-300 disabled:opacity-0"
               aria-label="Previous months"
             >
               <svg
@@ -332,7 +345,7 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
               type="button"
               onClick={goNext}
               disabled={pageIndex >= maxPage}
-              className="group p-2 transition-opacity duration-300 disabled:opacity-0"
+              className="group p-3 md:p-2 transition-opacity duration-300 disabled:opacity-0"
               aria-label="Next months"
             >
               <svg
@@ -364,7 +377,7 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16"
               >
                 {visibleMonths.map((mk) => (
                   <div key={mk}>{renderMonth(mk)}</div>
@@ -388,15 +401,15 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-ink rounded-sm" />
+              <div className="w-3 h-3 bg-brass/20 border border-brass/30 rounded-sm" />
               <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-text-muted">
-                Selected
+                Your Stay
               </span>
             </div>
           </div>
         </FadeIn>
 
-        {/* Selection summary */}
+        {/* Selection summary — desktop inline */}
         <AnimatePresence>
           {selectedCheckIn && estimatedTotal && checkOutDate && (
             <motion.div
@@ -404,14 +417,14 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="mt-12 border border-brass/30 bg-parchment/30 p-8 md:p-10"
+              className="hidden md:block mt-12 border border-brass/30 bg-parchment/30 p-10"
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="flex flex-row items-center justify-between gap-6">
                 <div className="flex flex-col gap-2">
                   <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted">
                     Your Stay
                   </p>
-                  <p className="font-serif text-xl md:text-2xl text-ink">
+                  <p className="font-serif text-2xl text-ink">
                     {formatDateShort(selectedCheckIn)} &mdash;{" "}
                     {formatDateShort(checkOutDate)}
                   </p>
@@ -419,11 +432,11 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
                     {MIN_NIGHTS} nights
                   </p>
                 </div>
-                <div className="flex flex-col items-start md:items-end gap-1">
+                <div className="flex flex-col items-end gap-1">
                   <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted">
                     Estimated Total
                   </p>
-                  <p className="font-serif text-3xl md:text-4xl text-brass">
+                  <p className="font-serif text-4xl text-brass">
                     ${estimatedTotal.toLocaleString()}
                   </p>
                   <p className="font-sans text-xs text-text-muted">
@@ -431,7 +444,7 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
                   </p>
                 </div>
               </div>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <div className="mt-8 flex flex-row gap-4">
                 <button
                   type="button"
                   onClick={() => {
@@ -454,6 +467,57 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Sticky mobile summary bar */}
+      <AnimatePresence>
+        {selectedCheckIn && estimatedTotal && checkOutDate && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-parchment border-t border-brass/30 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-4"
+          >
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <p className="font-serif text-base text-ink truncate">
+                  {formatDateShort(selectedCheckIn)} &mdash; {formatDateShort(checkOutDate)}
+                </p>
+                <p className="font-sans text-xs text-text-muted">
+                  {MIN_NIGHTS} nights
+                </p>
+              </div>
+              <div className="flex flex-col items-end gap-0.5 shrink-0">
+                <p className="font-serif text-xl text-brass">
+                  ${estimatedTotal.toLocaleString()}
+                </p>
+                <p className="font-sans text-[10px] text-text-muted">
+                  ~${Math.round(estimatedTotal / MIN_NIGHTS).toLocaleString()}/night
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById("inquiry");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="flex-1 bg-brass text-ink font-sans text-xs uppercase tracking-[0.15em] px-4 py-3.5 transition-all duration-400 cursor-pointer"
+              >
+                Inquire
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedCheckIn(null)}
+                className="border border-charcoal/20 bg-transparent font-sans text-xs uppercase tracking-[0.15em] text-charcoal px-4 py-3.5 transition-all duration-400 cursor-pointer"
+              >
+                Clear
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
