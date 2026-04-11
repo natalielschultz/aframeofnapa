@@ -7,6 +7,7 @@ import Image from "next/image";
 import { AMENITIES, PROPERTY } from "@/lib/constants";
 import { getVacationRentalSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import PropertyNavChips from "@/components/ui/PropertyNavChips";
+import PropertyGallery from "@/components/sections/PropertyGallery";
 
 export const metadata: Metadata = {
   title: "The Property — Restored 1969 A-Frame Cabin | Summit House Napa",
@@ -93,14 +94,28 @@ const amenityCategories = [
 ];
 
 const galleryItems = [
-  { label: "A-frame exterior at golden hour through the redwoods", image: "/images/living-room-full-chandelier.jpg" },
-  { label: "Conversation pit with fireplace glowing at dusk", image: "/images/sunken-lounge-colorful.jpg" },
-  { label: "Hot tub nestled among ferns and redwood trunks", image: "/images/hanging-chair-sunlit.jpg" },
-  { label: "Morning light streaming through the great room windows", image: "/images/sofa-window-trees.jpg" },
-  { label: "Zen garden mosaic table set for dinner", image: "/images/deck-dining-table-trees.jpg" },
-  { label: "Meditation trail winding through ancient forest", image: "/images/hot-tub-night.jpg" },
-  { label: "Primary loft bedroom with peak ceiling detail", image: "/images/exterior-peak-lookingup.jpg" },
-  { label: "Front deck panoramic view of Napa Valley", image: "/images/great-room-overhead-wide.jpg" },
+  { label: "Full living room with statement chandelier", image: "/images/living-room-full-chandelier.jpg" },
+  { label: "Colorful sunken lounge with fireplace glow", image: "/images/sunken-lounge-colorful.jpg" },
+  { label: "Sunlit hanging chair in the great room", image: "/images/hanging-chair-sunlit.jpg" },
+  { label: "Sofa area framed by redwood trees through the windows", image: "/images/sofa-window-trees.jpg" },
+  { label: "Zen garden dining table nestled among the trees", image: "/images/deck-dining-table-trees.jpg" },
+  { label: "Hot tub under the stars at night", image: "/images/hot-tub-night.jpg" },
+  { label: "A-frame peak viewed from below", image: "/images/exterior-peak-lookingup.jpg" },
+  { label: "Great room wide overhead view", image: "/images/great-room-overhead-wide.jpg" },
+  // Additional curated images
+  { label: "Antler candelabra glowing at night", image: "/images/antler-candelabra-night.jpg" },
+  { label: "Vaulted ceilings in the living room", image: "/images/living-room-vaulted.jpg" },
+  { label: "Wide view of the sunken living area", image: "/images/living-room-sunken-wide.jpg" },
+  { label: "Aerial overview of the property", image: "/images/property-overview-aerial.jpg" },
+  { label: "Swing chair in the living area", image: "/images/sofa-swing-chair-1.jpg" },
+  { label: "Sofa area with chandelier and vaulted ceiling", image: "/images/sofa-chandelier-vaulted.jpg" },
+  { label: "Living room with warm evening glow", image: "/images/living-room-wide-glow.jpg" },
+  { label: "A-frame peak interior view", image: "/images/summit-house-peak-interior.jpg" },
+  { label: "Outdoor dining setup in the daytime", image: "/images/deck-dining-closeup-day.jpg" },
+  { label: "Hanging chair and chandelier detail", image: "/images/hanging-chair-chandelier-detail.jpg" },
+  { label: "Living room aerial view at evening", image: "/images/living-room-aerial-evening.jpg" },
+  { label: "Sunken lounge area with entertainment setup", image: "/images/sunken-lounge-closeup-tv.jpg" },
+  { label: "Sofa against the window wall", image: "/images/sofa-window-wall.jpg" },
 ];
 
 export default function PropertyPage() {
@@ -226,21 +241,7 @@ export default function PropertyPage() {
           <FadeIn>
             <SectionHeading title="Gallery" />
           </FadeIn>
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {galleryItems.map((item, i) => (
-              <FadeIn key={item.label} delay={i * 0.05}>
-                <div
-                  className={`relative overflow-hidden ${
-                    i === 0 || i === 5
-                      ? "aspect-[4/3] md:col-span-2 md:row-span-2 md:aspect-square"
-                      : "aspect-square"
-                  }`}
-                >
-                  <Image src={item.image} alt={item.label} fill className="object-cover" />
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          <PropertyGallery items={galleryItems} />
         </div>
       </section>
 
