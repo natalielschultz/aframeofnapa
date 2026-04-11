@@ -61,25 +61,25 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
     return Array.from(set).sort();
   }, [days]);
 
-  // Show 2 months at a time on desktop, 1 on mobile (handled via CSS)
+  // Single month at a time, with right-side summary panel on desktop
   const [pageIndex, setPageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [selectedCheckIn, setSelectedCheckIn] = useState<string | null>(null);
   const [hoveredDate, setHoveredDate] = useState<string | null>(null);
 
-  const maxPage = Math.max(0, monthKeys.length - 2);
+  const maxPage = Math.max(0, monthKeys.length - 1);
 
   function goNext() {
     if (pageIndex < maxPage) {
       setDirection(1);
-      setPageIndex((p) => Math.min(p + 2, maxPage));
+      setPageIndex((p) => Math.min(p + 1, maxPage));
     }
   }
 
   function goPrev() {
     if (pageIndex > 0) {
       setDirection(-1);
-      setPageIndex((p) => Math.max(p - 2, 0));
+      setPageIndex((p) => Math.max(p - 1, 0));
     }
   }
 
@@ -182,16 +182,16 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
       const isPast = !info;
 
       let cellClasses =
-        "aspect-square flex flex-col items-center justify-center relative transition-all duration-300 ";
+        "aspect-square min-h-[44px] flex flex-col items-center justify-center relative transition-all duration-300 ";
 
       if (isCheckIn) {
         cellClasses +=
           "bg-ink text-parchment rounded-l-sm ";
       } else if (isCheckOut) {
         cellClasses +=
-          "bg-ink/5 rounded-r-sm ";
+          "bg-brass/20 border border-brass/40 rounded-r-sm ";
       } else if (isInRange) {
-        cellClasses += "bg-brass/8 ";
+        cellClasses += "bg-brass/20 border-y border-brass/30 ";
       } else {
         cellClasses += " ";
       }
@@ -214,9 +214,11 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
           aria-label={`${isAvailable ? (info?.dailyRate ? `$${info.dailyRate} per night` : "Available") : info?.status || "Unavailable"}, ${formatDateFull(dateStr)}`}
         >
           <span
-            className={`font-sans text-[13px] leading-none ${
+            className={`font-sans text-[15px] md:text-[13px] leading-none ${
               isCheckIn
                 ? "text-parchment font-medium"
+                : isInRange
+                ? "text-ink font-medium"
                 : isAvailable
                 ? "text-ink"
                 : "text-charcoal/25"
@@ -225,7 +227,7 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
             {d}
           </span>
           {isAvailable && info?.dailyRate && !isCheckIn && (
-            <span className="font-sans text-[9px] text-brass mt-0.5 leading-none">
+            <span className={`font-sans text-[10px] md:text-[9px] mt-0.5 leading-none ${isInRange ? "text-brass font-medium" : "text-brass"}`}>
               ${info.dailyRate}
             </span>
           )}
@@ -258,8 +260,8 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
     );
   }
 
-  // Visible months: 2 on desktop
-  const visibleMonths = monthKeys.slice(pageIndex, pageIndex + 2);
+  // Single month at a time
+  const visibleMonths = monthKeys.slice(pageIndex, pageIndex + 1);
 
   const slideVariants = {
     enter: (dir: number) => ({
@@ -277,10 +279,10 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
   };
 
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className={`bg-white py-20 md:py-28 ${selectedCheckIn ? "pb-[140px] md:pb-28" : ""}`}>
       <div className="mx-auto max-w-5xl px-6 md:px-12">
         <FadeIn>
-          <div className="flex flex-col items-center gap-4 mb-16 text-center">
+          <div className="flex flex-col items-center gap-4 mb-10 md:mb-16 text-center">
             <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted">
               Select Your Dates
             </p>
@@ -299,161 +301,220 @@ export default function AvailabilityCalendar({ days, onDatesSelect }: Props) {
           </div>
         </FadeIn>
 
+        {/* Two-column layout: calendar left, summary right on desktop */}
         <FadeIn delay={0.15}>
-          {/* Calendar navigation */}
-          <div className="flex items-center justify-between mb-10">
-            <button
-              type="button"
-              onClick={goPrev}
-              disabled={pageIndex === 0}
-              className="group p-2 transition-opacity duration-300 disabled:opacity-0"
-              aria-label="Previous months"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                className="text-charcoal group-hover:text-brass transition-colors duration-300"
-              >
-                <path
-                  d="M13 4L7 10L13 16"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+          <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
+            {/* Left column — calendar */}
+            <div className="flex-1 min-w-0">
+              {/* Calendar navigation */}
+              <div className="flex items-center justify-between mb-10 max-w-md mx-auto">
+                <button
+                  type="button"
+                  onClick={goPrev}
+                  disabled={pageIndex === 0}
+                  className="group p-3 md:p-2 transition-opacity duration-300 disabled:opacity-0"
+                  aria-label="Previous month"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    className="text-charcoal group-hover:text-brass transition-colors duration-300"
+                  >
+                    <path
+                      d="M13 4L7 10L13 16"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
 
-            <div className="flex-1" />
+                <div className="flex-1" />
 
-            <button
-              type="button"
-              onClick={goNext}
-              disabled={pageIndex >= maxPage}
-              className="group p-2 transition-opacity duration-300 disabled:opacity-0"
-              aria-label="Next months"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                className="text-charcoal group-hover:text-brass transition-colors duration-300"
-              >
-                <path
-                  d="M7 4L13 10L7 16"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
+                <button
+                  type="button"
+                  onClick={goNext}
+                  disabled={pageIndex >= maxPage}
+                  className="group p-3 md:p-2 transition-opacity duration-300 disabled:opacity-0"
+                  aria-label="Next month"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    className="text-charcoal group-hover:text-brass transition-colors duration-300"
+                  >
+                    <path
+                      d="M7 4L13 10L7 16"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
 
-          {/* Calendar grid */}
-          <div className="overflow-hidden">
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={visibleMonths.join("-")}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
-              >
-                {visibleMonths.map((mk) => (
-                  <div key={mk}>{renderMonth(mk)}</div>
-                ))}
-              </motion.div>
+              {/* Calendar grid */}
+              <div className="overflow-hidden">
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={visibleMonths.join("-")}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="max-w-md mx-auto"
+                  >
+                    {visibleMonths.map((mk) => (
+                      <div key={mk}>{renderMonth(mk)}</div>
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Legend */}
+              <div className="flex items-center justify-center gap-8 mt-10 pt-8 border-t border-charcoal/5 max-w-md mx-auto">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-brass/15 rounded-sm" />
+                  <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-text-muted">
+                    Available
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-charcoal/5 rounded-sm" />
+                  <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-text-muted">
+                    Unavailable
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-brass/20 border border-brass/30 rounded-sm" />
+                  <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-text-muted">
+                    Your Stay
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right column — desktop summary panel */}
+            <AnimatePresence>
+              {selectedCheckIn && estimatedTotal && checkOutDate && (
+                <motion.div
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 40 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="hidden md:block w-[300px] shrink-0 sticky top-[100px] border-l border-brass/30 pl-10"
+                >
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-2">
+                      <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted">
+                        Your Stay
+                      </p>
+                      <p className="font-serif text-xl text-ink">
+                        {formatDateShort(selectedCheckIn)} &mdash;{" "}
+                        {formatDateShort(checkOutDate)}
+                      </p>
+                      <p className="font-sans text-sm text-text-muted">
+                        {MIN_NIGHTS} nights
+                      </p>
+                    </div>
+
+                    <div className="border-t border-charcoal/10 pt-6">
+                      <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted">
+                        Estimated Total
+                      </p>
+                      <p className="font-serif text-3xl text-brass mt-2">
+                        ${estimatedTotal.toLocaleString()}
+                      </p>
+                      <p className="font-sans text-xs text-text-muted mt-1">
+                        ~${Math.round(estimatedTotal / MIN_NIGHTS).toLocaleString()}/night
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col gap-3 pt-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const el = document.getElementById("inquiry");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className="bg-brass text-ink font-sans text-xs uppercase tracking-[0.15em] px-6 py-4 hover:bg-ink hover:text-parchment transition-all duration-400 cursor-pointer text-center"
+                      >
+                        Inquire About These Dates
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedCheckIn(null)}
+                        className="border border-charcoal/20 bg-transparent font-sans text-xs uppercase tracking-[0.15em] text-charcoal px-6 py-4 hover:border-charcoal hover:bg-charcoal hover:text-parchment transition-all duration-400 cursor-pointer text-center"
+                      >
+                        Clear Selection
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
-
-          {/* Legend */}
-          <div className="flex items-center justify-center gap-8 mt-10 pt-8 border-t border-charcoal/5">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-brass/15 rounded-sm" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-text-muted">
-                Available
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-charcoal/5 rounded-sm" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-text-muted">
-                Unavailable
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-ink rounded-sm" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-text-muted">
-                Selected
-              </span>
-            </div>
-          </div>
         </FadeIn>
-
-        {/* Selection summary */}
-        <AnimatePresence>
-          {selectedCheckIn && estimatedTotal && checkOutDate && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="mt-12 border border-brass/30 bg-parchment/30 p-8 md:p-10"
-            >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div className="flex flex-col gap-2">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted">
-                    Your Stay
-                  </p>
-                  <p className="font-serif text-xl md:text-2xl text-ink">
-                    {formatDateShort(selectedCheckIn)} &mdash;{" "}
-                    {formatDateShort(checkOutDate)}
-                  </p>
-                  <p className="font-sans text-sm text-text-muted">
-                    {MIN_NIGHTS} nights
-                  </p>
-                </div>
-                <div className="flex flex-col items-start md:items-end gap-1">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-text-muted">
-                    Estimated Total
-                  </p>
-                  <p className="font-serif text-3xl md:text-4xl text-brass">
-                    ${estimatedTotal.toLocaleString()}
-                  </p>
-                  <p className="font-sans text-xs text-text-muted">
-                    ~${Math.round(estimatedTotal / MIN_NIGHTS).toLocaleString()}/night
-                  </p>
-                </div>
-              </div>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    const el = document.getElementById("inquiry");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="bg-brass text-ink font-sans text-xs uppercase tracking-[0.15em] px-8 py-4 hover:bg-ink hover:text-parchment transition-all duration-400 cursor-pointer"
-                >
-                  Inquire About These Dates
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedCheckIn(null)}
-                  className="border border-charcoal/20 bg-transparent font-sans text-xs uppercase tracking-[0.15em] text-charcoal px-8 py-4 hover:border-charcoal hover:bg-charcoal hover:text-parchment transition-all duration-400 cursor-pointer"
-                >
-                  Clear Selection
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
+
+      {/* Sticky mobile summary bar */}
+      <AnimatePresence>
+        {selectedCheckIn && estimatedTotal && checkOutDate && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-parchment border-t border-brass/30 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-4"
+          >
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <p className="font-serif text-base text-ink truncate">
+                  {formatDateShort(selectedCheckIn)} &mdash; {formatDateShort(checkOutDate)}
+                </p>
+                <p className="font-sans text-xs text-text-muted">
+                  {MIN_NIGHTS} nights
+                </p>
+              </div>
+              <div className="flex flex-col items-end gap-0.5 shrink-0">
+                <p className="font-serif text-xl text-brass">
+                  ${estimatedTotal.toLocaleString()}
+                </p>
+                <p className="font-sans text-[10px] text-text-muted">
+                  ~${Math.round(estimatedTotal / MIN_NIGHTS).toLocaleString()}/night
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById("inquiry");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="flex-1 bg-brass text-ink font-sans text-xs uppercase tracking-[0.15em] px-4 py-3.5 transition-all duration-400 cursor-pointer"
+              >
+                Inquire
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedCheckIn(null)}
+                className="border border-charcoal/20 bg-transparent font-sans text-xs uppercase tracking-[0.15em] text-charcoal px-4 py-3.5 transition-all duration-400 cursor-pointer"
+              >
+                Clear
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
