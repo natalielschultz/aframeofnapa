@@ -4,10 +4,11 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animation/FadeIn";
 import CTABanner from "@/components/sections/CTABanner";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 import { AMENITIES, PROPERTY } from "@/lib/constants";
+import IMAGES from "@/lib/images";
 import { getVacationRentalSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import PropertyNavChips from "@/components/ui/PropertyNavChips";
-import PropertyGallery from "@/components/sections/PropertyGallery";
 
 export const metadata: Metadata = {
   title: "The Property — Restored 1969 A-Frame Cabin | Summit House Napa",
@@ -43,7 +44,7 @@ const roomTour = [
     id: "great-room",
     title: "Great Room & Conversation Pit",
     description:
-      "The heart of Summit House is a soaring double-height great room crowned by the iconic triangular roofline. Floor-to-ceiling windows fill the space with filtered light from the surrounding redwoods. At its center, a sunken conversation pit — restored with custom cushions and anchored by a stone fireplace — invites the kind of slow, lingering evenings that define life on the mountain. The Sonos sound system fills the room with warmth, whether it is morning jazz or evening silence you are after.",
+      "The heart of Summit House is a soaring double-height great room crowned by the iconic triangular roofline. Floor-to-ceiling windows fill the space with filtered light from the surrounding redwoods. At its center, a sunken conversation pit \u2014 restored with custom cushions and anchored by a stone fireplace \u2014 invites the kind of slow, lingering evenings that define life on the mountain. The Sonos sound system fills the room with warmth, whether it is morning jazz or evening silence you are after.",
     imageLabel: "Double-height great room with sunken conversation pit and stone fireplace",
     image: "/images/great-room-window-wall.jpg",
     direction: "left" as const,
@@ -52,7 +53,7 @@ const roomTour = [
     id: "bedrooms",
     title: "Primary Bedroom",
     description:
-      "The primary suite occupies the upper loft of the A-frame, where the roofline meets at its peak. Wake to dappled light through the redwoods and the quiet of two acres of private land. The room features a king bed with luxury linens, designer lighting, and an en-suite bathroom with modern finishes. It is the kind of room where you lose track of which day it is — and that is the point.",
+      "The primary suite occupies the upper loft of the A-frame, where the roofline meets at its peak. Wake to dappled light through the redwoods and the quiet of two acres of private land. The room features a king bed with luxury linens, designer lighting, and an en-suite bathroom with modern finishes. It is the kind of room where you lose track of which day it is \u2014 and that is the point.",
     imageLabel: "Loft primary bedroom with king bed tucked beneath the A-frame peak",
     image: "/images/conversation-pit-closeup.jpg",
     direction: "right" as const,
@@ -70,7 +71,7 @@ const roomTour = [
     id: "kitchen",
     title: "Kitchen",
     description:
-      "Fully equipped for the kind of cooking that an extended stay demands — not just reheating, but real meals. Modern appliances, ample counter space, quality cookware, and a layout that makes the kitchen feel like part of the living experience rather than a utility room. Open a bottle of Mount Veeder wine, put something on the stove, and let the evening unfold.",
+      "Fully equipped for the kind of cooking that an extended stay demands \u2014 not just reheating, but real meals. Modern appliances, ample counter space, quality cookware, and a layout that makes the kitchen feel like part of the living experience rather than a utility room. Open a bottle of Mount Veeder wine, put something on the stove, and let the evening unfold.",
     imageLabel: "Modern kitchen with open shelving and view into the great room",
     image: "/images/living-room-full-view.jpg",
     direction: "right" as const,
@@ -79,7 +80,7 @@ const roomTour = [
     id: "outdoor",
     title: "Outdoor Spaces",
     description:
-      "The property extends far beyond the cabin walls. A wraparound front deck offers panoramic views of Napa Valley — the kind of vista that changes with every hour and every season. The zen garden, with its handmade mosaic dining table, is a place for morning coffee or afternoon reading. Two fire pit lounges anchor the evenings. And everywhere, the redwoods stand watch, ancient and still.",
+      "The property extends far beyond the cabin walls. A wraparound front deck offers panoramic views of Napa Valley \u2014 the kind of vista that changes with every hour and every season. The zen garden, with its handmade mosaic dining table, is a place for morning coffee or afternoon reading. Two fire pit lounges anchor the evenings. And everywhere, the redwoods stand watch, ancient and still.",
     imageLabel: "Front deck with panoramic valley views framed by towering redwoods",
     image: "/images/garden-pathway-brick.jpg",
     direction: "left" as const,
@@ -93,30 +94,31 @@ const amenityCategories = [
   { title: "Work & Connectivity", items: AMENITIES.work },
 ];
 
-const galleryItems = [
-  { label: "Full living room with statement chandelier", image: "/images/living-room-full-chandelier.jpg" },
-  { label: "Colorful sunken lounge with fireplace glow", image: "/images/sunken-lounge-colorful.jpg" },
-  { label: "Sunlit hanging chair in the great room", image: "/images/hanging-chair-sunlit.jpg" },
-  { label: "Sofa area framed by redwood trees through the windows", image: "/images/sofa-window-trees.jpg" },
-  { label: "Zen garden dining table nestled among the trees", image: "/images/deck-dining-table-trees.jpg" },
-  { label: "Hot tub under the stars at night", image: "/images/hot-tub-night.jpg" },
-  { label: "A-frame peak viewed from below", image: "/images/exterior-peak-lookingup.jpg" },
-  { label: "Great room wide overhead view", image: "/images/great-room-overhead-wide.jpg" },
-  // Additional curated images
-  { label: "Antler candelabra glowing at night", image: "/images/antler-candelabra-night.jpg" },
-  { label: "Vaulted ceilings in the living room", image: "/images/living-room-vaulted.jpg" },
-  { label: "Wide view of the sunken living area", image: "/images/living-room-sunken-wide.jpg" },
-  { label: "Aerial overview of the property", image: "/images/property-overview-aerial.jpg" },
-  { label: "Swing chair in the living area", image: "/images/sofa-swing-chair-1.jpg" },
-  { label: "Sofa area with chandelier and vaulted ceiling", image: "/images/sofa-chandelier-vaulted.jpg" },
-  { label: "Living room with warm evening glow", image: "/images/living-room-wide-glow.jpg" },
-  { label: "A-frame peak interior view", image: "/images/summit-house-peak-interior.jpg" },
-  { label: "Outdoor dining setup in the daytime", image: "/images/deck-dining-closeup-day.jpg" },
-  { label: "Hanging chair and chandelier detail", image: "/images/hanging-chair-chandelier-detail.jpg" },
-  { label: "Living room aerial view at evening", image: "/images/living-room-aerial-evening.jpg" },
-  { label: "Sunken lounge area with entertainment setup", image: "/images/sunken-lounge-closeup-tv.jpg" },
-  { label: "Sofa against the window wall", image: "/images/sofa-window-wall.jpg" },
-];
+const galleryKeys = [
+  "living-room-full-chandelier",
+  "sunken-lounge-colorful",
+  "hanging-chair-sunlit",
+  "sofa-window-trees",
+  "deck-dining-table-trees",
+  "hot-tub-night",
+  "exterior-peak-lookingup",
+  "great-room-overhead-wide",
+  "living-room-vaulted",
+  "deck-sunset-firepit",
+  "antler-candelabra-night",
+  "sunken-lounge-fireplace",
+  "sofa-chandelier-vaulted",
+  "hanging-chair-red-glow",
+  "living-room-wide-glow",
+  "deck-seating-treeline",
+  "sofa-swing-chair-1",
+  "living-room-sunken-wide",
+  "deck-dining-night",
+  "summit-house-peak-interior",
+  "sunrise-through-window",
+] as const;
+
+const galleryItems = galleryKeys.map((key) => IMAGES[key]);
 
 export default function PropertyPage() {
   return (
@@ -163,7 +165,7 @@ export default function PropertyPage() {
           <FadeIn>
             <SectionHeading
               title="A Tour of Summit House"
-              subtitle="Every room has been restored with intention — honoring the 1969 architecture while equipping every corner for modern comfort."
+              subtitle="Every room has been restored with intention \u2014 honoring the 1969 architecture while equipping every corner for modern comfort."
             />
           </FadeIn>
           <div className="mt-20 flex flex-col gap-24 md:gap-32">
@@ -209,7 +211,7 @@ export default function PropertyPage() {
           <FadeIn>
             <SectionHeading
               title="Amenities"
-              subtitle="Everything included in your stay — no hidden fees, no nickel-and-diming."
+              subtitle="Everything included in your stay \u2014 no hidden fees, no nickel-and-diming."
             />
           </FadeIn>
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -241,7 +243,28 @@ export default function PropertyPage() {
           <FadeIn>
             <SectionHeading title="Gallery" />
           </FadeIn>
-          <PropertyGallery items={galleryItems} />
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {galleryItems.map((item, i) => (
+              <FadeIn key={item.src} delay={i * 0.05}>
+                <div
+                  className={`relative overflow-hidden ${
+                    i % 8 === 0 || i % 8 === 5
+                      ? "aspect-[4/3] md:col-span-2 md:row-span-2 md:aspect-square"
+                      : "aspect-square"
+                  }`}
+                >
+                  <Image src={item.src} alt={item.alt} fill className="object-cover" />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          <FadeIn>
+            <div className="mt-12 text-center">
+              <Button variant="secondary" href="/gallery">
+                View All Photos
+              </Button>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
