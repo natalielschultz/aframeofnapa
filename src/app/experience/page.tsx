@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     title: "The Experience — Trails, Wellness & Wine Country | Summit House Napa",
     description:
       "Discover daily life on Mount Veeder: private meditation trail, outdoor hot tub, infrared sauna, and Napa Valley wine country at your doorstep.",
-    images: [{ url: "/images/sunrise-through-window.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/images/twilight-deck-lounge-sunset.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Experience — Trails, Wellness & Wine Country | Summit House Napa",
     description:
       "Discover daily life on Mount Veeder: private meditation trail, outdoor hot tub, infrared sauna, and wine country at your doorstep.",
-    images: ["/images/sunrise-through-window.jpg"],
+    images: ["/images/twilight-deck-lounge-sunset.jpg"],
   },
 };
 
@@ -37,7 +37,7 @@ const timeline = [
       "Begin on the private meditation trail, a winding path through ancient redwoods that leads to Enchanted Hills Waterfall. Return to the deck for coffee as the valley below fills with morning light. The silence here is not empty — it is layered with birdsong, wind through the canopy, and the particular stillness that only exists at 2,000 feet.",
     imageLabel:
       "Morning mist along the meditation trail through ancient redwoods",
-    image: "/images/deck-rattan-chairs.jpg",
+    image: "/images/balcony-rattan-chairs.jpg",
   },
   {
     time: "Midday",
@@ -47,7 +47,7 @@ const timeline = [
       "With Starlink satellite internet reaching every corner of the property, Summit House becomes a creative workspace without equal. Settle into the dedicated desk, the conversation pit, or a chair on the front deck — wherever focus finds you. The distance from the city is not a limitation here. It is the entire point. Writers, founders, and remote professionals have all found that the mountain sharpens their thinking.",
     imageLabel:
       "Laptop and coffee on the front deck with valley views beyond",
-    image: "/images/sofa-window-trees.jpg",
+    image: "/images/living-room-sofa-redwood-view.jpg",
   },
   {
     time: "Afternoon",
@@ -57,7 +57,7 @@ const timeline = [
       "Step into the outdoor infrared sauna and let the warmth dissolve whatever the morning held. Follow it with the open-air shower — cold water, redwood canopy overhead, a practice in presence. Then sink into the hot tub, surrounded by ferns and ancient trunks, and watch the afternoon light shift through the trees. This is the rhythm of a long stay: not indulgence, but restoration.",
     imageLabel:
       "Outdoor infrared sauna nestled among ferns and redwood trunks",
-    image: "/images/hot-tub-night.jpg",
+    image: "/images/hot-tub-sauna-garden.jpg",
   },
   {
     time: "Evening",
@@ -67,7 +67,7 @@ const timeline = [
       "As the sun sets behind the ridge, light one of the two fire pits and let the evening arrive slowly. The conversation pit — with its sunken design and stone fireplace — is where the best nights happen. Cook dinner in the fully equipped kitchen, open a bottle from a Mount Veeder winery, and settle in. On clear nights, step outside. At this elevation, with no light pollution, the stars are extraordinary.",
     imageLabel:
       "Fire pit glowing at dusk with redwood silhouettes against a starlit sky",
-    image: "/images/deck-sunset-firepit.jpg",
+    image: "/images/twilight-deck-firepit-sunset.jpg",
   },
 ];
 
@@ -78,7 +78,7 @@ const wellnessSuite = [
       "A Hot Spring Prodigy hot tub seats six and is tucked into a grove of redwoods and sword ferns. Morning soaks, afternoon recovery, midnight stargazing — it becomes the anchor of daily life on the mountain. The water is always ready. The view never gets old.",
     imageLabel:
       "Hot Spring Prodigy hot tub surrounded by ferns and redwood trunks",
-    image: "/images/hot-tub-night.jpg",
+    image: "/images/twilight-hot-tub-illuminated.jpg",
   },
   {
     title: "Infrared Sauna",
@@ -86,7 +86,7 @@ const wellnessSuite = [
       "The outdoor infrared sauna sits among the trees, offering deep therapeutic heat in a setting that feels more like a forest ritual than a wellness amenity. Step out into cool mountain air, let the contrast wake every nerve, and understand why this is not a feature — it is a practice.",
     imageLabel:
       "Cedar infrared sauna with glass door opening onto the forest floor",
-    image: "/images/summit-house-exterior-front.jpg",
+    image: "/images/infrared-sauna.jpg",
   },
   {
     title: "Outdoor Shower",
@@ -94,7 +94,7 @@ const wellnessSuite = [
       "An open-air shower beneath the redwood canopy. Hot water, cold water, sky overhead, bark and fern at eye level. It is one of those experiences that sounds simple and turns out to be unforgettable. Guests mention it in every review. You will understand why.",
     imageLabel:
       "Open-air shower with natural stone base beneath towering redwoods",
-    image: "/images/exterior-windows-lookingup.jpg",
+    image: "/images/outdoor-shower.jpg",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function ExperiencePage() {
       />
       {/* 1. Hero */}
       <Hero
-        image="/images/sunrise-through-window.jpg"
+        image="/images/twilight-deck-lounge-sunset.jpg"
         title="The Experience"
         subtitle="What happens when a month isn't a booking — it's a rhythm."
       />
@@ -191,7 +191,7 @@ export default function ExperiencePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
             <FadeIn direction="left">
               <div className="relative aspect-[3/4] overflow-hidden">
-                <Image src="/images/garden-pathway-brick.jpg" alt="The private meditation trail winding through ancient redwoods toward Enchanted Hills Waterfall" fill className="object-cover" />
+                <Image src="/images/meditation-spot-redwoods.jpg" alt="The private meditation trail winding through ancient redwoods toward Enchanted Hills Waterfall" fill className="object-cover" />
               </div>
             </FadeIn>
             <FadeIn direction="right" delay={0.15}>
@@ -293,14 +293,14 @@ export default function ExperiencePage() {
             <FadeIn direction="right" delay={0.15}>
               <div className="flex flex-col gap-4">
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image src="/images/deck-dining-night.jpg" alt="Deck dining at night with string lights and candles" fill className="object-cover" />
+                  <Image src="/images/twilight-deck-dining-stringlights.jpg" alt="Deck dining at night with string lights and candles" fill className="object-cover" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative aspect-square overflow-hidden">
-                    <Image src="/images/deck-sunset-firepit.jpg" alt="Fire pit lounge at twilight" fill className="object-cover" />
+                    <Image src="/images/twilight-firepit-sauna-garden.jpg" alt="Fire pit lounge at twilight" fill className="object-cover" />
                   </div>
                   <div className="relative aspect-square overflow-hidden">
-                    <Image src="/images/deck-seating-treeline.jpg" alt="Panoramic valley view from the front deck" fill className="object-cover" />
+                    <Image src="/images/deck-lounge-redwoods-day.jpg" alt="Panoramic valley view from the front deck" fill className="object-cover" />
                   </div>
                 </div>
               </div>

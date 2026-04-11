@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "House Manual — Summit House Napa",
     description:
       "Everything you need for your stay at Summit House Napa. WiFi, hot tub, kitchen, house rules, local recommendations, and more.",
-    images: [{ url: "/images/great-room-window-wall.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/images/great-room-conversation-pit-wide.jpg", width: 1200, height: 630 }],
   },
 };
 

@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     title: "Our Story — The Renovation & Philosophy | Summit House Napa",
     description:
       "How a 1969 A-frame cabin on Mount Veeder was restored into a luxury monthly retreat. The renovation journey and hosting philosophy.",
-    images: [{ url: "/images/great-room-chandelier-angle.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/images/twilight-great-room-chandelier.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Our Story — The Renovation & Philosophy | Summit House Napa",
     description:
       "How a 1969 A-frame cabin on Mount Veeder was restored into a luxury monthly retreat.",
-    images: ["/images/great-room-chandelier-angle.jpg"],
+    images: ["/images/twilight-great-room-chandelier.jpg"],
   },
 };
 
@@ -34,7 +34,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("Our Story", "/about")) }}
       />
       <Hero
-        image="/images/great-room-chandelier-angle.jpg"
+        image="/images/twilight-great-room-chandelier.jpg"
         title="The Story"
         subtitle="How a 1969 A-frame became a mountaintop sanctuary."
       />
@@ -49,7 +49,7 @@ export default function AboutPage() {
                 align="left"
               />
               <div className="mt-8 relative aspect-[3/4] overflow-hidden">
-                <Image src="/images/summit-house-exterior-front.jpg" alt="Summit House exterior nestled among ancient redwoods" fill className="object-cover" />
+                <Image src="/images/exterior-front-driveway.jpg" alt="Summit House exterior nestled among ancient redwoods" fill className="object-cover" />
               </div>
             </FadeIn>
             <FadeIn delay={0.2} className="lg:col-span-8 flex items-center">
@@ -101,7 +101,7 @@ export default function AboutPage() {
             <FadeIn delay={0.15}>
               <div className="flex flex-col gap-4">
                 <div className="relative aspect-video overflow-hidden">
-                  <Image src="/images/sunken-lounge-overhead-day.jpg" alt="After — renovated interior with sunken lounge" fill className="object-cover" />
+                  <Image src="/images/great-room-conversation-pit-wide.jpg" alt="After — renovated interior with sunken lounge" fill className="object-cover" />
                 </div>
                 <span className="font-sans text-xs uppercase tracking-[0.15em] text-text-muted">
                   After

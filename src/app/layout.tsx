@@ -31,14 +31,14 @@ export const metadata: Metadata = {
     title: "Summit House Napa — Luxury Monthly Retreat on Mount Veeder",
     description:
       "Private mountaintop sanctuary among ancient redwoods at Mount Veeder, Napa Valley. Restored 1969 A-frame with hot tub, sauna, and panoramic views.",
-    images: [{ url: "/images/deck-sunset-firepit.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/images/twilight-aframe-facade-front.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Summit House Napa — Luxury Monthly Retreat on Mount Veeder",
     description:
       "Private mountaintop sanctuary among ancient redwoods at Mount Veeder, Napa Valley. Restored 1969 A-frame with hot tub, sauna, and panoramic views.",
-    images: ["/images/deck-sunset-firepit.jpg"],
+    images: ["/images/twilight-aframe-facade-front.jpg"],
   },
 };
 

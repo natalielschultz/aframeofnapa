@@ -18,7 +18,7 @@ const pillars = [
       "A fully restored 1969 A-frame cabin with sunken conversation pit, designer finishes, and two acres of private land.",
     href: "/property",
     label: "Mountain cabin with soaring A-frame ceilings and floor-to-ceiling windows",
-    image: "/images/summit-house-exterior-front.jpg",
+    image: "/images/exterior-front-driveway.jpg",
   },
   {
     title: "The Experience",
@@ -26,7 +26,7 @@ const pillars = [
       "Private meditation trails, an outdoor wellness suite, and evenings spent under ancient redwoods by the fire.",
     href: "/experience",
     label: "Guest relaxing in hot tub overlooking Napa Valley at sunset",
-    image: "/images/hot-tub-night.jpg",
+    image: "/images/twilight-hot-tub-illuminated.jpg",
   },
   {
     title: "The Setting",
@@ -34,7 +34,7 @@ const pillars = [
       "Perched at the summit of Mount Veeder, surrounded by redwoods, with panoramic views of Napa Valley below.",
     href: "/location",
     label: "Panoramic view of Napa Valley from Mount Veeder summit",
-    image: "/images/sunset-silhouette-window.jpg",
+    image: "/images/twilight-deck-firepit-sunset.jpg",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Home() {
       />
       {/* 1. Hero */}
       <Hero
-        image="/images/deck-sunset-firepit.jpg"
+        image="/images/twilight-deck-aframe-glowing.jpg"
         title="Summit House Napa"
         subtitle="A private mountaintop retreat above Napa Valley — two acres of ancient redwoods at the peak of Mount Veeder."
         cta={{ label: "Check Availability", href: "/availability" }}
@@ -184,19 +184,19 @@ export default function Home() {
             {/* Large image left */}
             <FadeIn direction="left">
               <div className="relative aspect-[3/4] overflow-hidden">
-                <Image src="/images/sunrise-through-window.jpg" alt={signatureMoments[0]} fill className="object-cover" />
+                <Image src="/images/meditation-spot-redwoods.jpg" alt={signatureMoments[0]} fill className="object-cover" />
               </div>
             </FadeIn>
             {/* Two stacked images right */}
             <div className="flex flex-col gap-6">
               <FadeIn direction="right" delay={0.1}>
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image src="/images/sunken-lounge-fireplace.jpg" alt={signatureMoments[1]} fill className="object-cover" />
+                  <Image src="/images/twilight-conversation-pit.jpg" alt={signatureMoments[1]} fill className="object-cover" />
                 </div>
               </FadeIn>
               <FadeIn direction="right" delay={0.2}>
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image src="/images/deck-dining-night.jpg" alt={signatureMoments[2]} fill className="object-cover" />
+                  <Image src="/images/twilight-hot-tub-illuminated.jpg" alt={signatureMoments[2]} fill className="object-cover" />
                 </div>
               </FadeIn>
             </div>

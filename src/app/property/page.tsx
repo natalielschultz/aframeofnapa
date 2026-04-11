@@ -8,6 +8,7 @@ import { AMENITIES, PROPERTY } from "@/lib/constants";
 import { getVacationRentalSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import PropertyNavChips from "@/components/ui/PropertyNavChips";
 import PropertyGallery from "@/components/sections/PropertyGallery";
+import { getImage } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "The Property — Restored 1969 A-Frame Cabin | Summit House Napa",
@@ -18,14 +19,14 @@ export const metadata: Metadata = {
     title: "The Property — Restored 1969 A-Frame Cabin | Summit House Napa",
     description:
       "Tour a fully restored 1969 A-frame cabin on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, and panoramic Napa Valley views.",
-    images: [{ url: "/images/summit-house-exterior-foggy.jpg", width: 1200, height: 630 }],
+    images: [{ url: getImage("aerial-aframe-facade").src, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Property — Restored 1969 A-Frame Cabin | Summit House Napa",
     description:
       "Tour a fully restored 1969 A-frame cabin on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, and panoramic Napa Valley views.",
-    images: ["/images/summit-house-exterior-foggy.jpg"],
+    images: [getImage("aerial-aframe-facade").src],
   },
 };
 
@@ -44,8 +45,8 @@ const roomTour = [
     title: "Great Room & Conversation Pit",
     description:
       "The heart of Summit House is a soaring double-height great room crowned by the iconic triangular roofline. Floor-to-ceiling windows fill the space with filtered light from the surrounding redwoods. At its center, a sunken conversation pit — restored with custom cushions and anchored by a stone fireplace — invites the kind of slow, lingering evenings that define life on the mountain. The Sonos sound system fills the room with warmth, whether it is morning jazz or evening silence you are after.",
-    imageLabel: "Double-height great room with sunken conversation pit and stone fireplace",
-    image: "/images/great-room-window-wall.jpg",
+    imageLabel: getImage("great-room-conversation-pit-wide").alt,
+    image: getImage("great-room-conversation-pit-wide").src,
     direction: "left" as const,
   },
   {
@@ -53,8 +54,8 @@ const roomTour = [
     title: "Primary Bedroom",
     description:
       "The primary suite occupies the upper loft of the A-frame, where the roofline meets at its peak. Wake to dappled light through the redwoods and the quiet of two acres of private land. The room features a king bed with luxury linens, designer lighting, and an en-suite bathroom with modern finishes. It is the kind of room where you lose track of which day it is — and that is the point.",
-    imageLabel: "Loft primary bedroom with king bed tucked beneath the A-frame peak",
-    image: "/images/conversation-pit-closeup.jpg",
+    imageLabel: getImage("primary-bedroom-desk-peak").alt,
+    image: getImage("primary-bedroom-desk-peak").src,
     direction: "right" as const,
   },
   {
@@ -62,8 +63,8 @@ const roomTour = [
     title: "Guest Bedrooms",
     description:
       "Two additional bedrooms on the main level provide comfortable retreats for guests or family. Each is thoughtfully appointed with quality mattresses, soft linens, and the quiet insulation that comes from being surrounded by forest. Whether welcoming friends for part of your stay or settling in for a multi-month creative retreat, every guest sleeps well on Mount Veeder.",
-    imageLabel: "Guest bedroom with warm textiles and natural wood accents",
-    image: "/images/sunrise-from-loft.jpg",
+    imageLabel: getImage("guest-bedroom-loft-ladder").alt,
+    image: getImage("guest-bedroom-loft-ladder").src,
     direction: "left" as const,
   },
   {
@@ -71,8 +72,8 @@ const roomTour = [
     title: "Kitchen",
     description:
       "Fully equipped for the kind of cooking that an extended stay demands — not just reheating, but real meals. Modern appliances, ample counter space, quality cookware, and a layout that makes the kitchen feel like part of the living experience rather than a utility room. Open a bottle of Mount Veeder wine, put something on the stove, and let the evening unfold.",
-    imageLabel: "Modern kitchen with open shelving and view into the great room",
-    image: "/images/living-room-full-view.jpg",
+    imageLabel: getImage("kitchen-dining-overview").alt,
+    image: getImage("kitchen-dining-overview").src,
     direction: "right" as const,
   },
   {
@@ -80,8 +81,8 @@ const roomTour = [
     title: "Outdoor Spaces",
     description:
       "The property extends far beyond the cabin walls. A wraparound front deck offers panoramic views of Napa Valley — the kind of vista that changes with every hour and every season. The zen garden, with its handmade mosaic dining table, is a place for morning coffee or afternoon reading. Two fire pit lounges anchor the evenings. And everywhere, the redwoods stand watch, ancient and still.",
-    imageLabel: "Front deck with panoramic valley views framed by towering redwoods",
-    image: "/images/garden-pathway-brick.jpg",
+    imageLabel: getImage("deck-full-aframe-front").alt,
+    image: getImage("deck-full-aframe-front").src,
     direction: "left" as const,
   },
 ];
@@ -94,28 +95,27 @@ const amenityCategories = [
 ];
 
 const galleryItems = [
-  { label: "Full living room with statement chandelier", image: "/images/living-room-full-chandelier.jpg" },
-  { label: "Colorful sunken lounge with fireplace glow", image: "/images/sunken-lounge-colorful.jpg" },
-  { label: "Sunlit hanging chair in the great room", image: "/images/hanging-chair-sunlit.jpg" },
-  { label: "Sofa area framed by redwood trees through the windows", image: "/images/sofa-window-trees.jpg" },
-  { label: "Zen garden dining table nestled among the trees", image: "/images/deck-dining-table-trees.jpg" },
-  { label: "Hot tub under the stars at night", image: "/images/hot-tub-night.jpg" },
-  { label: "A-frame peak viewed from below", image: "/images/exterior-peak-lookingup.jpg" },
-  { label: "Great room wide overhead view", image: "/images/great-room-overhead-wide.jpg" },
-  // Additional curated images
-  { label: "Antler candelabra glowing at night", image: "/images/antler-candelabra-night.jpg" },
-  { label: "Vaulted ceilings in the living room", image: "/images/living-room-vaulted.jpg" },
-  { label: "Wide view of the sunken living area", image: "/images/living-room-sunken-wide.jpg" },
-  { label: "Aerial overview of the property", image: "/images/property-overview-aerial.jpg" },
-  { label: "Swing chair in the living area", image: "/images/sofa-swing-chair-1.jpg" },
-  { label: "Sofa area with chandelier and vaulted ceiling", image: "/images/sofa-chandelier-vaulted.jpg" },
-  { label: "Living room with warm evening glow", image: "/images/living-room-wide-glow.jpg" },
-  { label: "A-frame peak interior view", image: "/images/summit-house-peak-interior.jpg" },
-  { label: "Outdoor dining setup in the daytime", image: "/images/deck-dining-closeup-day.jpg" },
-  { label: "Hanging chair and chandelier detail", image: "/images/hanging-chair-chandelier-detail.jpg" },
-  { label: "Living room aerial view at evening", image: "/images/living-room-aerial-evening.jpg" },
-  { label: "Sunken lounge area with entertainment setup", image: "/images/sunken-lounge-closeup-tv.jpg" },
-  { label: "Sofa against the window wall", image: "/images/sofa-window-wall.jpg" },
+  { label: getImage("twilight-aframe-facade-front").alt, image: getImage("twilight-aframe-facade-front").src },
+  { label: getImage("great-room-conversation-pit-windows").alt, image: getImage("great-room-conversation-pit-windows").src },
+  { label: getImage("conversation-pit-fireplace-closeup").alt, image: getImage("conversation-pit-fireplace-closeup").src },
+  { label: getImage("living-room-sofa-redwood-view").alt, image: getImage("living-room-sofa-redwood-view").src },
+  { label: getImage("kitchen-island-pendants").alt, image: getImage("kitchen-island-pendants").src },
+  { label: getImage("twilight-hot-tub-illuminated").alt, image: getImage("twilight-hot-tub-illuminated").src },
+  { label: getImage("aerial-aframe-facade").alt, image: getImage("aerial-aframe-facade").src },
+  { label: getImage("loft-overhead-chandelier").alt, image: getImage("loft-overhead-chandelier").src },
+  { label: getImage("primary-suite-marble-wall").alt, image: getImage("primary-suite-marble-wall").src },
+  { label: getImage("twilight-deck-lounge-sunset").alt, image: getImage("twilight-deck-lounge-sunset").src },
+  { label: getImage("bathroom-floral-wallpaper").alt, image: getImage("bathroom-floral-wallpaper").src },
+  { label: getImage("aerial-property-full").alt, image: getImage("aerial-property-full").src },
+  { label: getImage("dining-nook-aframe-windows").alt, image: getImage("dining-nook-aframe-windows").src },
+  { label: getImage("twilight-great-room-chandelier").alt, image: getImage("twilight-great-room-chandelier").src },
+  { label: getImage("deck-dining-picnic-table").alt, image: getImage("deck-dining-picnic-table").src },
+  { label: getImage("primary-bedroom-triangular-window").alt, image: getImage("primary-bedroom-triangular-window").src },
+  { label: getImage("outdoor-shower").alt, image: getImage("outdoor-shower").src },
+  { label: getImage("kitchen-viking-range-closeup").alt, image: getImage("kitchen-viking-range-closeup").src },
+  { label: getImage("twilight-aerial-aframe-glowing").alt, image: getImage("twilight-aerial-aframe-glowing").src },
+  { label: getImage("zen-garden-hot-tub-overview").alt, image: getImage("zen-garden-hot-tub-overview").src },
+  { label: getImage("infrared-sauna").alt, image: getImage("infrared-sauna").src },
 ];
 
 export default function PropertyPage() {
@@ -131,7 +131,7 @@ export default function PropertyPage() {
       />
       {/* 1. Hero */}
       <Hero
-        image="/images/summit-house-exterior-foggy.jpg"
+        image={getImage("aerial-aframe-deck-closeup").src}
         title="The Property"
         subtitle="A fully restored 1969 A-frame cabin, reimagined for the modern long-stay guest."
       />

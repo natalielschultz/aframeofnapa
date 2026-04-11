@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     title: "Availability & Monthly Rates | Summit House Napa",
     description:
       "Check availability and seasonal rates for Summit House Napa. Monthly stays from $8,000–$16,000. Book direct for the best experience.",
-    images: [{ url: "/images/living-room-full-chandelier.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/images/twilight-great-room-full.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Availability & Monthly Rates | Summit House Napa",
     description:
       "Monthly stays from $8,000–$16,000. Peak season April–November, off-peak December–March.",
-    images: ["/images/living-room-full-chandelier.jpg"],
+    images: ["/images/twilight-great-room-full.jpg"],
   },
 };
 
@@ -81,7 +81,7 @@ export default async function AvailabilityPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("Availability & Rates", "/availability")) }}
       />
       <Hero
-        image="/images/living-room-full-chandelier.jpg"
+        image="/images/twilight-great-room-full.jpg"
         title="Availability & Rates"
         subtitle="Extended stays on Mount Veeder, priced by season."
       />

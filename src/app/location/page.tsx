@@ -14,14 +14,14 @@ export const metadata: Metadata = {
     title: "Mount Veeder, Napa Valley — Location & Access | Summit House Napa",
     description:
       "Located at the summit of Mount Veeder, 15 minutes from downtown Napa. Proximity to wineries, restaurants, and San Francisco.",
-    images: [{ url: "/images/sunset-silhouette-window.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/images/aerial-property-full.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mount Veeder, Napa Valley — Location & Access | Summit House Napa",
     description:
       "Located at the summit of Mount Veeder, 15 minutes from downtown Napa.",
-    images: ["/images/sunset-silhouette-window.jpg"],
+    images: ["/images/aerial-property-full.jpg"],
   },
 };
 
@@ -66,7 +66,7 @@ export default function LocationPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("Mount Veeder", "/location")) }}
       />
       <Hero
-        image="/images/sunset-silhouette-window.jpg"
+        image="/images/aerial-property-full.jpg"
         title="Mount Veeder"
         subtitle="One of Napa Valley's most prestigious and storied appellations."
       />

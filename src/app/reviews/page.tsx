@@ -19,13 +19,13 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description: `Rated ${stats.rating} out of 5 from ${stats.count} verified Airbnb reviews. See what guests say about Summit House Napa, a luxury Mount Veeder retreat.`,
-      images: [{ url: "/images/hanging-chair-sunlit.jpg", width: 1200, height: 630 }],
+      images: [{ url: "/images/living-room-green-sofa-wide.jpg", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: `Rated ${stats.rating} out of 5 from ${stats.count} verified Airbnb reviews.`,
-      images: ["/images/hanging-chair-sunlit.jpg"],
+      images: ["/images/living-room-green-sofa-wide.jpg"],
     },
   };
 }
@@ -52,7 +52,7 @@ export default async function ReviewsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema("Guest Reviews", "/reviews")) }}
       />
       <Hero
-        image="/images/hanging-chair-sunlit.jpg"
+        image="/images/living-room-green-sofa-wide.jpg"
         title="What Guests Say"
         subtitle={`${stats.rating} out of 5 — ${stats.count} reviews on Airbnb.`}
       />
