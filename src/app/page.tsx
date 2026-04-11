@@ -200,7 +200,7 @@ export default function Home() {
           <FadeIn>
             <div className="flex flex-col items-center gap-8">
               <h2 className="font-serif font-extralight uppercase tracking-[4px] text-[32px] md:text-5xl text-ink leading-tight">
-                Monthly stays from $8,000
+                Monthly stays from $10,000
               </h2>
               <p className="font-sans text-base md:text-lg text-text-muted leading-relaxed max-w-xl">
                 Extended stays on Mount Veeder, priced by season. Utilities, WiFi, and all amenities included.

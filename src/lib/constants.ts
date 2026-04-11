@@ -30,12 +30,13 @@ export const PROPERTY = {
   yearBuilt: 1969,
 } as const;
 
+// Seasonal pricing - hardcoded display rates
 export const PRICING = {
   seasons: [
     {
       name: "Peak Season",
       months: "April–Nov",
-      range: "$16,000–$18,000",
+      range: "$14,000–$16,000",
       description: "Summer through harvest. The most sought-after months in Napa Valley.",
     },
     {

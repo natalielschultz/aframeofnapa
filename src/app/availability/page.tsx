@@ -8,22 +8,24 @@ import { PRICING } from "@/lib/constants";
 import { getDayAvailability, computeSeasonalRates, formatRateRange } from "@/lib/availability";
 import { getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Availability & Monthly Rates | Summit House Napa",
   description:
-    "Check availability and seasonal rates for Summit House Napa. Monthly stays from $8,000–$16,000. Peak season April–November, off-peak December–March. Book direct.",
+    "Check availability and seasonal rates for Summit House Napa. Monthly stays from $10,000–$16,000. Peak season April–November, off-peak December–March. Book direct.",
   alternates: { canonical: "/availability" },
   openGraph: {
     title: "Availability & Monthly Rates | Summit House Napa",
     description:
-      "Check availability and seasonal rates for Summit House Napa. Monthly stays from $8,000–$16,000. Book direct for the best experience.",
+      "Check availability and seasonal rates for Summit House Napa. Monthly stays from $10,000–$16,000. Book direct for the best experience.",
     images: [{ url: "/images/twilight-great-room-full.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Availability & Monthly Rates | Summit House Napa",
     description:
-      "Monthly stays from $8,000–$16,000. Peak season April–November, off-peak December–March.",
+      "Monthly stays from $10,000–$16,000. Peak season April–November, off-peak December–March.",
     images: ["/images/twilight-great-room-full.jpg"],
   },
 };
@@ -57,18 +59,8 @@ function getCurrentSeasonName(): string {
 export default async function AvailabilityPage() {
   const currentSeason = getCurrentSeasonName();
   const days = await getDayAvailability();
-  const liveRates = computeSeasonalRates(days);
-
-  // Override hardcoded ranges with live API data when available
-  const seasons = PRICING.seasons.map((season) => {
-    if (season.name === "Peak Season" && liveRates.peak) {
-      return { ...season, range: formatRateRange(liveRates.peak) };
-    }
-    if (season.name === "Off-Peak" && liveRates.offPeak) {
-      return { ...season, range: formatRateRange(liveRates.offPeak) };
-    }
-    return season;
-  });
+  // Use hardcoded seasonal rates from constants
+  const seasons = PRICING.seasons;
 
   return (
     <>
