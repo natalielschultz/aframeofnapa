@@ -62,7 +62,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex">
             <Link
-              href="/availability"
+              href="/availability#inquiry"
               onClick={() => trackEvent("cta_click", { location: "navbar_desktop" })}
               className="font-serif bg-brass px-5 py-2.5 text-xs uppercase tracking-[2.5px] text-ink transition-colors duration-200 hover:bg-brass-light"
             >
@@ -131,7 +131,7 @@ export default function Navbar() {
                 transition={{ duration: 0.3, delay: NAV_LINKS.length * 0.05 }}
               >
                 <Link
-                  href="/availability"
+                  href="/availability#inquiry"
                   onClick={() => {
                     trackEvent("cta_click", { location: "navbar_mobile" });
                     setMobileOpen(false);

@@ -206,7 +206,7 @@ export default function Home() {
               <p className="font-sans text-base md:text-lg text-text-muted leading-relaxed max-w-xl">
                 Extended stays on Mount Veeder, priced by season. Utilities, WiFi, and all amenities included.
               </p>
-              <Button variant="primary" href="/availability">
+              <Button variant="primary" href="/availability#inquiry">
                 Inquire Now
               </Button>
             </div>

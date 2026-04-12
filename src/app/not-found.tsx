@@ -28,7 +28,7 @@ export default function NotFound() {
             Return Home
           </Link>
           <Link
-            href="/availability"
+            href="/availability#inquiry"
             className="inline-block border border-ink text-ink font-sans text-xs uppercase tracking-[0.2em] px-8 py-4 hover:bg-ink hover:text-parchment transition-colors"
           >
             Check Availability
