@@ -7,21 +7,21 @@ import CTABanner from "@/components/sections/CTABanner";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Our Story — The Renovation & Philosophy | Summit House Napa",
+  title: "Our Story — Philosophy & Hosting | Summit House Napa",
   description:
-    "How a 1969 A-frame cabin on Mount Veeder was restored into a luxury monthly retreat. The renovation journey, hosting philosophy, and why booking direct matters.",
+    "The story behind Summit House Napa — a 1969 A-frame sanctuary on Mount Veeder. Why we host, why booking direct matters, and what makes a month on the mountain different.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "Our Story — The Renovation & Philosophy | Summit House Napa",
+    title: "Our Story — Philosophy & Hosting | Summit House Napa",
     description:
-      "How a 1969 A-frame cabin on Mount Veeder was restored into a luxury monthly retreat. The renovation journey and hosting philosophy.",
+      "The story behind Summit House Napa — a 1969 A-frame sanctuary on Mount Veeder. Why we host and why booking direct matters.",
     images: [{ url: "/images/twilight-great-room-chandelier.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Story — The Renovation & Philosophy | Summit House Napa",
+    title: "Our Story — Philosophy & Hosting | Summit House Napa",
     description:
-      "How a 1969 A-frame cabin on Mount Veeder was restored into a luxury monthly retreat.",
+      "The story behind Summit House Napa — a 1969 A-frame sanctuary on Mount Veeder.",
     images: ["/images/twilight-great-room-chandelier.jpg"],
   },
 };
@@ -40,13 +40,13 @@ export default function AboutPage() {
         alt="Summit House great room chandelier glowing warmly beneath the A-frame roofline at dusk"
       />
 
-      {/* Origin */}
+      {/* The Place */}
       <section className="bg-parchment py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             <FadeIn className="lg:col-span-4">
               <SectionHeading
-                title="The Discovery"
+                title="The Place"
                 align="left"
               />
               <div className="mt-8 relative aspect-[3/4] overflow-hidden">
@@ -58,85 +58,23 @@ export default function AboutPage() {
                 <p>
                   Summit House sits at the very summit of Mount Veeder, tucked
                   among ancient redwoods at the end of a winding mountain road.
-                  When the property was first discovered, it had been quietly
-                  aging for decades — a 1969 A-frame cabin with extraordinary
-                  bones, cathedral ceilings, massive windows facing the forest,
-                  and two acres of wild, private land. The air was
-                  different up there — cooler, cleaner, impossibly quiet. Not
+                  A 1969 A-frame with cathedral ceilings, massive windows facing
+                  the forest, and two acres of wild, private land. The air is
+                  different up here — cooler, cleaner, impossibly quiet. Not
                   just a house, but a feeling: the sense that the rest of the
-                  world had been gently set aside.
+                  world has been gently set aside.
                 </p>
                 <p>
-                  It was immediately clear that this was something rare — a
-                  property with the kind of natural setting and architectural
-                  character that couldn&rsquo;t be replicated. The question was
-                  never whether to restore it, but how to do so in a way that
-                  honored what made it special in the first place.
+                  Every detail has been considered — from the sunken conversation
+                  pit and its stone fireplace to the outdoor wellness suite with
+                  hot tub, infrared sauna, and open-air shower. The kitchen is
+                  fully equipped for real cooking. The Starlink connection is fast
+                  enough for any remote workflow. The property is designed for
+                  guests who want to live here, not just visit.
                 </p>
               </div>
             </FadeIn>
           </div>
-        </div>
-      </section>
-
-      {/* The Renovation */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <FadeIn>
-            <SectionHeading
-              title="The Renovation"
-              subtitle="Two years of careful, intentional transformation."
-            />
-          </FadeIn>
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FadeIn>
-              <div className="flex flex-col gap-4">
-                <div className="bg-surface flex items-center justify-center text-text-muted text-sm aspect-video">
-                  Before — original A-frame exterior, 2021
-                </div>
-                <span className="font-sans text-xs uppercase tracking-[0.15em] text-text-muted">
-                  Before
-                </span>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <div className="flex flex-col gap-4">
-                <div className="relative aspect-video overflow-hidden">
-                  <Image src="/images/great-room-conversation-pit-wide.jpg" alt="After — renovated interior with sunken lounge" fill className="object-cover" />
-                </div>
-                <span className="font-sans text-xs uppercase tracking-[0.15em] text-text-muted">
-                  After
-                </span>
-              </div>
-            </FadeIn>
-          </div>
-          <FadeIn delay={0.3}>
-            <div className="mt-14 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-              <div className="lg:col-span-6 space-y-6 font-sans text-base text-text leading-relaxed">
-                <p>
-                  The renovation began with the essentials: a complete new roof,
-                  upgraded electrical and plumbing systems, and structural
-                  reinforcement of the original A-frame. Every decision was guided
-                  by a simple principle — honor the architecture. The dramatic
-                  roofline, the soaring windows, the way light enters each room —
-                  these were the elements that made the house worth saving, and they
-                  had to remain at the center of the design.
-                </p>
-              </div>
-              <div className="lg:col-span-6 space-y-6 font-sans text-base text-text leading-relaxed">
-                <p>
-                  From there, every surface was reimagined. The kitchen was rebuilt
-                  with modern appliances and custom cabinetry. The bathrooms were
-                  gutted and redesigned with designer tile and fixtures. Outside,
-                  the Hot Spring Prodigy hot tub, an infrared sauna, the open-air
-                  shower, two fire pit lounges, and the zen garden with its mosaic
-                  dining table were added. The result is a property that feels both
-                  timeless and entirely new — a place where mid-century character
-                  meets contemporary luxury.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
         </div>
       </section>
 
