@@ -53,19 +53,28 @@ const roomTour = [
     id: "bedrooms",
     title: "Primary Bedroom",
     description:
-      "The primary suite occupies the upper loft of the A-frame, where the roofline meets at its peak. Wake to dappled light through the redwoods and the quiet of two acres of private land. The room features a king bed with luxury linens, designer lighting, and an en-suite bathroom with modern finishes. It is the kind of room where you lose track of which day it is — and that is the point.",
+      "The primary suite sits at the peak of the A-frame, where sunrise light filters through the surrounding redwoods each morning. A king bed with luxury linens, designer lighting, and an en-suite bathroom with modern finishes. It is the kind of room where you lose track of which day it is — and that is the point.",
     imageLabel: getImage("primary-bedroom-desk-peak").alt,
     image: getImage("primary-bedroom-desk-peak").src,
     direction: "right" as const,
   },
   {
     id: undefined,
-    title: "Guest Bedrooms",
+    title: "Downstairs Guest Suite",
     description:
-      "Two additional bedrooms on the main level provide comfortable retreats for guests or family. Each is thoughtfully appointed with quality mattresses, soft linens, and the quiet insulation that comes from being surrounded by forest. Whether welcoming friends for part of your stay or settling in for a multi-month creative retreat, every guest sleeps well on Mount Veeder.",
+      "A private bedroom on the lower level with a California king bed, designer accent wall, and a door that opens directly onto the garden and wellness area — step outside to the hot tub, sauna, or outdoor shower without passing through the rest of the house. The most private bedroom in the property.",
+    imageLabel: getImage("primary-suite-garden-door").alt,
+    image: getImage("primary-suite-garden-door").src,
+    direction: "left" as const,
+  },
+  {
+    id: undefined,
+    title: "Upstairs Guest Bedroom",
+    description:
+      "A comfortable bedroom tucked beneath the A-frame roofline with quality linens, natural light through the redwoods, and an additional sleeping loft accessible by ladder. Whether welcoming friends for part of your stay or settling in for a multi-month creative retreat, every guest sleeps well on Mount Veeder.",
     imageLabel: getImage("guest-bedroom-loft-ladder").alt,
     image: getImage("guest-bedroom-loft-ladder").src,
-    direction: "left" as const,
+    direction: "right" as const,
   },
   {
     id: "kitchen",
@@ -74,7 +83,7 @@ const roomTour = [
       "Fully equipped for the kind of cooking that an extended stay demands — not just reheating, but real meals. Modern appliances, ample counter space, quality cookware, and a layout that makes the kitchen feel like part of the living experience rather than a utility room. Open a bottle of Mount Veeder wine, put something on the stove, and let the evening unfold.",
     imageLabel: getImage("kitchen-dining-overview").alt,
     image: getImage("kitchen-dining-overview").src,
-    direction: "right" as const,
+    direction: "left" as const,
   },
   {
     id: "outdoor",
@@ -83,7 +92,7 @@ const roomTour = [
       "The property extends far beyond the cabin walls. A wraparound front deck offers panoramic views of Napa Valley — the kind of vista that changes with every hour and every season. The zen garden, with its handmade mosaic dining table, is a place for morning coffee or afternoon reading. Two fire pit lounges anchor the evenings. And everywhere, the redwoods stand watch, ancient and still.",
     imageLabel: getImage("deck-full-aframe-front").alt,
     image: getImage("deck-full-aframe-front").src,
-    direction: "left" as const,
+    direction: "right" as const,
   },
 ];
 
