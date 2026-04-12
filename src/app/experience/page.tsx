@@ -336,12 +336,20 @@ export default function ExperiencePage() {
                 back to the fire pit. The valley is there when you want it. The
                 mountain is there when you don&rsquo;t.
               </p>
-              <Link
-                href="/location"
-                className="font-sans text-xs uppercase tracking-[0.2em] text-brass hover:text-ink transition-colors"
-              >
-                Explore the Location &rarr;
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/location"
+                  className="font-sans text-xs uppercase tracking-[0.2em] text-brass hover:text-ink transition-colors"
+                >
+                  Explore the Location &rarr;
+                </Link>
+                <Link
+                  href="/remote-work-retreat-napa-valley"
+                  className="font-sans text-xs uppercase tracking-[0.2em] text-brass hover:text-ink transition-colors"
+                >
+                  Remote Work Retreat &rarr;
+                </Link>
+              </div>
             </div>
           </FadeIn>
         </div>

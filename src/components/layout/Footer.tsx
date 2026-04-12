@@ -35,6 +35,18 @@ export default function Footer() {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                href="/remote-work-retreat-napa-valley"
+                className="text-sm text-parchment/80 transition-colors duration-200 hover:text-sage"
+              >
+                Remote Work
+              </Link>
+              <Link
+                href="/blog"
+                className="text-sm text-parchment/80 transition-colors duration-200 hover:text-sage"
+              >
+                Journal
+              </Link>
             </nav>
           </div>
 

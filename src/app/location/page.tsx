@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animation/FadeIn";
@@ -102,6 +103,12 @@ export default function LocationPage() {
                   a week, and a month can feel like a lifetime. This is the Napa Valley that
                   most visitors never see: wild, unhurried, and profoundly private.
                 </p>
+                <Link
+                  href="/mount-veeder-napa-area-guide"
+                  className="font-sans text-xs uppercase tracking-[0.2em] text-brass hover:text-ink transition-colors inline-block mt-2"
+                >
+                  Read our Mount Veeder Guide &rarr;
+                </Link>
               </div>
             </FadeIn>
           </div>

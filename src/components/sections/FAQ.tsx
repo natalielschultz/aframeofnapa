@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface FAQItem {
   question: string;
   answer: string;
+  link?: { label: string; href: string };
 }
 
 const faqData: FAQItem[] = [
@@ -13,6 +15,7 @@ const faqData: FAQItem[] = [
     question: "What is the minimum stay?",
     answer:
       "Our minimum stay is one month. Summit House is designed for extended stays — whether you're working remotely, taking a sabbatical, or simply slowing down. We find that a full month allows guests to truly settle into the rhythm of the mountain.",
+    link: { label: "Read: Why 31 Days?", href: "/blog/why-napa-rentals-require-31-days" },
   },
   {
     question: "Are pets allowed?",
@@ -100,6 +103,14 @@ export default function FAQ() {
                     <p className="font-sans text-sm md:text-base text-text-muted leading-relaxed pt-4 pb-2">
                       {item.answer}
                     </p>
+                    {item.link && (
+                      <Link
+                        href={item.link.href}
+                        className="inline-block font-sans text-xs uppercase tracking-[0.2em] text-brass hover:text-ink transition-colors pb-2"
+                      >
+                        {item.link.label} &rarr;
+                      </Link>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>

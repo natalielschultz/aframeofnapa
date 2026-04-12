@@ -79,7 +79,7 @@ export function getFAQSchema() {
         name: "What is the minimum stay?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "31 days minimum.",
+          text: "31 days minimum. We embrace the extended stay because a month on Mount Veeder transforms a vacation into something deeper. Read more about why at summithousenapa.com/blog/why-napa-rentals-require-31-days.",
         },
       },
       {
@@ -179,6 +179,34 @@ export function getFAQSchema() {
         },
       },
     ],
+  };
+}
+
+export function getArticleSchema(article: {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  image: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    url: `https://www.summithousenapa.com${article.url}`,
+    datePublished: article.datePublished,
+    image: `https://www.summithousenapa.com${article.image}`,
+    author: {
+      "@type": "Organization",
+      name: "Summit House Napa",
+      url: "https://www.summithousenapa.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Summit House Napa",
+      url: "https://www.summithousenapa.com",
+    },
   };
 }
 
