@@ -28,6 +28,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    title: "Finding Summit House",
+    subtitle: "A designer's story",
+    href: "/blog/finding-summit-house",
+    image: "/images/great-room-conversation-pit-windows.jpg",
+    excerpt:
+      "I was born and raised in Napa Valley, and I'd spent my life thinking I knew every corner of it. In 2018, I drove up a mountain road I'd somehow never taken before, and near the summit, I found a place I didn't know existed.",
+    date: "April 2026",
+  },
+  {
     title: "The Rare Kind of Privacy",
     subtitle: "On seclusion, access, and living at the summit for a season",
     href: "/blog/the-rare-kind-of-privacy-in-napa",

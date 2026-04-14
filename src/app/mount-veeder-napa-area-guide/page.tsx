@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animation/FadeIn";
@@ -25,17 +26,20 @@ export const metadata: Metadata = {
   },
 };
 
-const wineries = [
+const wineries: { name: string; url?: string; note: string }[] = [
   {
     name: "Mount Veeder Winery",
+    url: "https://mountveederwinery.com",
     note: "One of the original estate wineries on the mountain. Known for structured, age-worthy Cabernet. Tastings by appointment.",
   },
   {
     name: "Hess Collection",
+    url: "https://hesscollection.com",
     note: "A large, well-known winery on the lower slopes of Mount Veeder with an impressive contemporary art collection integrated into the tasting space. More accessible for walk-in visits than most mountain producers.",
   },
   {
     name: "Mayacamas Vineyards",
+    url: "https://mayacamas.com",
     note: "Historic estate at the summit of the Mayacamas Range. One of the most respected names in California wine. Produces small quantities of Cabernet and Chardonnay that are allocated and hard to find. Visits are very limited but worth pursuing.",
   },
   {
@@ -48,15 +52,17 @@ const wineries = [
   },
 ];
 
-const dining = [
+const dining: { name: string; location: string; url?: string; note: string }[] = [
   {
     name: "The French Laundry",
     location: "Yountville",
+    url: "https://www.thomaskeller.com/tfl",
     note: "Reservations open 60 days in advance at 10am Pacific and fill within minutes. If you're staying 31+ days, you have enough runway to plan and secure a table. One of a handful of restaurants in the world deserving of the effort.",
   },
   {
     name: "Bouchon Bistro",
     location: "Yountville",
+    url: "https://www.thomaskeller.com/bouchon",
     note: "Thomas Keller's more accessible Yountville restaurant. Excellent for a regular Tuesday dinner. The burger at the bar is one of the best in the valley.",
   },
   {
@@ -81,9 +87,10 @@ const dining = [
   },
 ];
 
-const outdoors = [
+const outdoors: { name: string; url?: string; note: string }[] = [
   {
     name: "Bothe-Napa Valley State Park",
+    url: "https://www.parks.ca.gov/?page_id=477",
     note: "Located on Highway 29 between St. Helena and Calistoga. Swimming pool (seasonal), redwood groves, and several hiking trails ranging from easy to moderate. One of the more underused state parks in the region.",
   },
   {
@@ -158,7 +165,15 @@ export default function MountVeederAreaGuidePage() {
           <FadeIn>
             <div className="space-y-6 font-sans text-base md:text-lg text-text leading-relaxed">
               <p>
-                Mount Veeder sits at the western edge of Napa Valley, rising to over 2,600
+                <a
+                  href="https://napavintners.com/napa_valley/mount-veeder-ava/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brass underline-offset-4 hover:underline"
+                >
+                  Mount Veeder
+                </a>{" "}
+                sits at the western edge of Napa Valley, rising to over 2,600
                 feet above the valley floor. It is one of Napa&rsquo;s oldest and most
                 respected American Viticultural Areas — known for small-production Cabernet
                 Sauvignon with an intensity that valley-floor wines rarely match. It is
@@ -211,7 +226,18 @@ export default function MountVeederAreaGuidePage() {
               <FadeIn key={winery.name} delay={i * 0.1}>
                 <div className="border border-charcoal/10 p-8 flex flex-col gap-3 h-full">
                   <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink">
-                    {winery.name}
+                    {winery.url ? (
+                      <a
+                        href={winery.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-brass transition-colors"
+                      >
+                        {winery.name}
+                      </a>
+                    ) : (
+                      winery.name
+                    )}
                   </h3>
                   <div className="bg-brass h-px w-10" aria-hidden="true" />
                   <p className="font-sans text-sm text-text-muted leading-relaxed">
@@ -236,7 +262,18 @@ export default function MountVeederAreaGuidePage() {
                 <div className="border border-charcoal/10 p-8 flex flex-col gap-3 h-full">
                   <div className="flex items-baseline justify-between gap-4">
                     <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink">
-                      {item.name}
+                      {item.url ? (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-brass transition-colors"
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        item.name
+                      )}
                     </h3>
                     <span className="font-sans text-sm text-brass uppercase tracking-wider whitespace-nowrap">
                       {item.location}
@@ -264,7 +301,18 @@ export default function MountVeederAreaGuidePage() {
               <FadeIn key={item.name} delay={i * 0.1}>
                 <div className="border border-charcoal/10 p-8 flex flex-col gap-3 h-full">
                   <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink">
-                    {item.name}
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-brass transition-colors"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      item.name
+                    )}
                   </h3>
                   <div className="bg-brass h-px w-10" aria-hidden="true" />
                   <p className="font-sans text-sm text-text-muted leading-relaxed">
@@ -336,6 +384,53 @@ export default function MountVeederAreaGuidePage() {
               noticing what they have.
             </p>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* Read more from the journal */}
+      <section className="bg-parchment py-20 md:py-28">
+        <div className="mx-auto max-w-5xl px-6 md:px-12">
+          <FadeIn>
+            <SectionHeading title="Read More from the Journal" />
+          </FadeIn>
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <FadeIn delay={0.1}>
+              <Link
+                href="/blog/finding-summit-house"
+                className="group block border border-charcoal/10 p-8 h-full hover:border-brass transition-colors"
+              >
+                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-brass mb-3">
+                  A Designer&rsquo;s Story
+                </p>
+                <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink mb-3 group-hover:text-brass transition-colors">
+                  Finding Summit House
+                </h3>
+                <p className="font-sans text-sm text-text-muted leading-relaxed">
+                  How a lifelong Napa native found three 1969 A-frames at the
+                  summit of Mount Veeder and chose to recognize them rather than
+                  reinvent them.
+                </p>
+              </Link>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <Link
+                href="/blog/the-rare-kind-of-privacy-in-napa"
+                className="group block border border-charcoal/10 p-8 h-full hover:border-brass transition-colors"
+              >
+                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-brass mb-3">
+                  On Seclusion &amp; Access
+                </p>
+                <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink mb-3 group-hover:text-brass transition-colors">
+                  The Rare Kind of Privacy
+                </h3>
+                <p className="font-sans text-sm text-text-muted leading-relaxed">
+                  Most people think about privacy in Napa as something you buy.
+                  It&rsquo;s also something you can simply live inside of for a
+                  little while.
+                </p>
+              </Link>
+            </FadeIn>
+          </div>
         </div>
       </section>
 

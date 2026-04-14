@@ -256,7 +256,13 @@ export default function TheRareKindOfPrivacyPage() {
           <FadeIn>
             <p className="font-sans italic text-base md:text-lg text-text-muted leading-relaxed">
               Summit House is a private residence at the summit of Mount Veeder,
-              Napa Valley.
+              Napa Valley — recognized, not reinvented.{" "}
+              <Link
+                href="/blog/finding-summit-house"
+                className="not-italic text-brass underline-offset-4 hover:underline"
+              >
+                Read how the designer found it →
+              </Link>
             </p>
           </FadeIn>
         </div>
