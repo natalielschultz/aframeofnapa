@@ -4,7 +4,7 @@ export function getLodgingBusinessSchema(reviewStats?: { rating: string; count: 
     "@type": "LodgingBusiness",
     name: "Summit House Napa",
     description:
-      "Restored 1969 A-frame luxury cabin rental on Mount Veeder. 3BR/2.5BA, sleeps 11, 2 acres, hot tub, sauna.",
+      "Summit House is a private residence at the summit of Mount Veeder, Napa Valley. A fully renovated 1969 home on several private acres of ancient redwoods. Monthly residencies with rates starting at 31 nights. Includes hot tub, sauna, outdoor shower, meditation trail, Starlink internet, and a fully equipped kitchen.",
     url: "https://www.summithousenapa.com",
     email: "stay@summithousenapa.com",
     address: {
@@ -41,9 +41,9 @@ export function getVacationRentalSchema(reviewStats?: { rating: string; count: n
   return {
     "@context": "https://schema.org",
     "@type": "VacationRental",
-    name: "Summit House Napa Luxury Cabin",
+    name: "Summit House Napa A-Frame Residence",
     description:
-      "Restored 1969 A-frame with hot tub, sauna, meditation trail. Sleeps 11 on 2 acres. Full-month luxury rentals in Napa Valley.",
+      "A fully renovated 1969 A-frame residence at the summit of Mount Veeder with hot tub, sauna, and private meditation trail. Sleeps 11 on several private acres of ancient redwoods. Monthly residencies in Napa Valley.",
     url: "https://www.summithousenapa.com/property",
     numberOfBedrooms: 3,
     numberOfBathroomsTotal: 2.5,
@@ -87,7 +87,7 @@ export function getFAQSchema() {
         name: "What's included in the monthly rate?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Utilities, WiFi (Starlink), hot tub, sauna, everything in the cabin. Guests bring groceries.",
+          text: "Utilities, WiFi (Starlink), hot tub, sauna, and everything on the property. Guests bring groceries.",
         },
       },
       {
@@ -175,7 +175,7 @@ export function getFAQSchema() {
         name: "What makes this different from other Napa Valley rentals?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Most Napa rentals are on the valley floor. Summit House sits at the summit of Mount Veeder — 2 private acres of ancient redwoods with panoramic views above the valley. It's a mountaintop of your own.",
+          text: "Most Napa rentals are on the valley floor. Summit House sits at the summit of Mount Veeder — several private acres of ancient redwoods with panoramic views above the valley. It's a mountaintop of your own.",
         },
       },
     ],

@@ -19,7 +19,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Summit House Napa — Luxury Monthly Retreat on Mount Veeder",
   description:
-    "Private mountaintop sanctuary among ancient redwoods at Mount Veeder, Napa Valley. Restored 1969 A-frame with hot tub, sauna, and panoramic views.",
+    "Summit House is a private residence at the summit of Mount Veeder, Napa Valley. A fully renovated 1969 home on several private acres of ancient redwoods. Monthly residencies.",
   metadataBase: new URL("https://www.summithousenapa.com"),
   alternates: {
     canonical: "/",
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     siteName: "Summit House Napa",
     title: "Summit House Napa — Luxury Monthly Retreat on Mount Veeder",
     description:
-      "Private mountaintop sanctuary among ancient redwoods at Mount Veeder, Napa Valley. Restored 1969 A-frame with hot tub, sauna, and panoramic views.",
+      "Summit House is a private residence at the summit of Mount Veeder, Napa Valley. A fully renovated 1969 home on several private acres of ancient redwoods. Monthly residencies.",
     images: [{ url: "/images/twilight-aframe-facade-front.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Summit House Napa — Luxury Monthly Retreat on Mount Veeder",
     description:
-      "Private mountaintop sanctuary among ancient redwoods at Mount Veeder, Napa Valley. Restored 1969 A-frame with hot tub, sauna, and panoramic views.",
+      "Summit House is a private residence at the summit of Mount Veeder, Napa Valley. A fully renovated 1969 home on several private acres of ancient redwoods. Monthly residencies.",
     images: ["/images/twilight-aframe-facade-front.jpg"],
   },
 };

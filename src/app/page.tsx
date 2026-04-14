@@ -14,9 +14,9 @@ const pillars = [
   {
     title: "The Property",
     description:
-      "A fully restored 1969 A-frame cabin with sunken conversation pit, designer finishes, and two acres of private land.",
+      "A fully restored 1969 residence with a sunken conversation pit, designer finishes, and several acres of private land.",
     href: "/property",
-    label: "Mountain cabin with soaring A-frame ceilings and floor-to-ceiling windows",
+    label: "A-frame residence with soaring ceilings and floor-to-ceiling windows",
     image: "/images/exterior-front-driveway.jpg",
   },
   {
@@ -30,7 +30,7 @@ const pillars = [
   {
     title: "The Setting",
     description:
-      "Perched at the summit of Mount Veeder, surrounded by redwoods, with panoramic views of Napa Valley below.",
+      "Perched at the summit of Mount Veeder, surrounded by ancient redwoods, fifteen minutes from downtown Napa.",
     href: "/location",
     label: "Panoramic view of Napa Valley from Mount Veeder summit",
     image: "/images/twilight-deck-firepit-sunset.jpg",
@@ -60,8 +60,8 @@ export default function Home() {
       <Hero
         image="/images/twilight-aerial-aframe-glowing.jpg"
         title="Summit House Napa"
-        subtitle="A private mountaintop retreat above Napa Valley — two acres of ancient redwoods at the peak of Mount Veeder."
-        alt="Aerial view of Summit House A-frame cabin glowing at twilight, nestled among ancient redwoods on Mount Veeder"
+        subtitle="A private mountaintop retreat above Napa Valley — several acres of ancient redwoods at the peak of Mount Veeder."
+        alt="Aerial view of Summit House A-frame glowing at twilight, nestled among ancient redwoods on Mount Veeder"
         cta={{ label: "Check Availability", href: "/availability" }}
       />
 
@@ -201,10 +201,10 @@ export default function Home() {
           <FadeIn>
             <div className="flex flex-col items-center gap-8">
               <h2 className="font-serif font-extralight uppercase tracking-[4px] text-[32px] md:text-5xl text-ink leading-tight">
-                Monthly stays from $10,000
+                Monthly Residency
               </h2>
               <p className="font-sans text-base md:text-lg text-text-muted leading-relaxed max-w-xl">
-                Extended stays on Mount Veeder, priced by season. Utilities, WiFi, and all amenities included.
+                Extended stays on Mount Veeder — priced by season. Utilities, WiFi, and all amenities included.
               </p>
               <Button variant="primary" href="/availability#inquiry">
                 Inquire Now

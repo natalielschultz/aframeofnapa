@@ -22,7 +22,7 @@ export const PROPERTY = {
   bedrooms: 3,
   bathrooms: 2.5,
   sqft: "2,000",
-  acres: "2",
+  acres: "2+",
   maxGuests: 11,
   minStay: 31,
   rating: 4.88,
