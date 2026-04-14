@@ -268,6 +268,86 @@ export default function TheRareKindOfPrivacyPage() {
         </div>
       </section>
 
+      {/* Read more from the journal */}
+      <section className="bg-parchment py-20 md:py-28">
+        <div className="mx-auto max-w-5xl px-6 md:px-12">
+          <FadeIn>
+            <SectionHeading title="Read More from the Journal" />
+          </FadeIn>
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <FadeIn delay={0.1}>
+              <Link
+                href="/blog/finding-summit-house"
+                className="group block border border-charcoal/10 p-8 h-full hover:border-brass transition-colors"
+              >
+                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-brass mb-3">
+                  A Designer&rsquo;s Story
+                </p>
+                <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink mb-3 group-hover:text-brass transition-colors">
+                  Finding Summit House
+                </h3>
+                <p className="font-sans text-sm text-text-muted leading-relaxed">
+                  How a lifelong Napa native found three 1969 A-frames at the
+                  summit of Mount Veeder and chose to recognize them rather than
+                  reinvent them.
+                </p>
+              </Link>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <Link
+                href="/mount-veeder-napa-area-guide"
+                className="group block border border-charcoal/10 p-8 h-full hover:border-brass transition-colors"
+              >
+                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-brass mb-3">
+                  Wineries, Trails, Towns
+                </p>
+                <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink mb-3 group-hover:text-brass transition-colors">
+                  Mount Veeder Area Guide
+                </h3>
+                <p className="font-sans text-sm text-text-muted leading-relaxed">
+                  A complete guide to Mount Veeder and the surrounding Napa
+                  Valley area — wineries, hiking, dining, and more.
+                </p>
+              </Link>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <Link
+                href="/blog/napa-valley-locals-guide"
+                className="group block border border-charcoal/10 p-8 h-full hover:border-brass transition-colors"
+              >
+                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-brass mb-3">
+                  Where to Eat, Drink &amp; Shop
+                </p>
+                <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink mb-3 group-hover:text-brass transition-colors">
+                  Napa Valley Locals Guide
+                </h3>
+                <p className="font-sans text-sm text-text-muted leading-relaxed">
+                  A born-and-raised native&rsquo;s list of restaurants, markets,
+                  wineries, and the cocktail moves locals actually use.
+                </p>
+              </Link>
+            </FadeIn>
+            <FadeIn delay={0.25}>
+              <Link
+                href="/blog/best-hikes-napa-valley"
+                className="group block border border-charcoal/10 p-8 h-full hover:border-brass transition-colors"
+              >
+                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-brass mb-3">
+                  A Native&rsquo;s Insider Guide
+                </p>
+                <h3 className="font-serif font-light uppercase tracking-[2px] text-xl text-ink mb-3 group-hover:text-brass transition-colors">
+                  Best Hikes in Napa Valley
+                </h3>
+                <p className="font-sans text-sm text-text-muted leading-relaxed">
+                  The trails, historic spots, and wild places locals actually
+                  walk — from Petrified Forest to Mount St. Helena.
+                </p>
+              </Link>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       <CTABanner
         headline="Live inside the quiet for a season"
         buttonLabel="Inquire About Residency"

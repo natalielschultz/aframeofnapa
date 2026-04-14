@@ -28,6 +28,24 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    title: "Napa Valley Locals Guide",
+    subtitle: "Where to eat, drink, and shop",
+    href: "/blog/napa-valley-locals-guide",
+    image: "/images/twilight-deck-table-sunset.jpg",
+    excerpt:
+      "I'm a born-and-raised Napa native. This is the list I'd hand a friend who was moving here for a month — restaurants, markets, wineries, and the cocktail moves locals actually use.",
+    date: "April 2026",
+  },
+  {
+    title: "Best Hikes in Napa Valley",
+    subtitle: "A native's insider guide",
+    href: "/blog/best-hikes-napa-valley",
+    image: "/images/meditation-spot-cushions.jpg",
+    excerpt:
+      "There's the Napa you eat and drink in. There's also the Napa you walk into — wilder, older, less photographed. As a born-and-raised native, this is where I actually go.",
+    date: "April 2026",
+  },
+  {
     title: "Finding Summit House",
     subtitle: "A designer's story",
     href: "/blog/finding-summit-house",

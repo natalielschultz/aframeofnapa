@@ -22,6 +22,8 @@ const config = {
       '/mount-veeder-napa-area-guide': 0.8,
       '/blog/the-rare-kind-of-privacy-in-napa': 0.8,
       '/blog/finding-summit-house': 0.8,
+      '/blog/napa-valley-locals-guide': 0.8,
+      '/blog/best-hikes-napa-valley': 0.8,
       '/blog': 0.6,
     };
     return {
