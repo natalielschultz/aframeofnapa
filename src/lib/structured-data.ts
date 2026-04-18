@@ -40,7 +40,9 @@ export function getOrganizationSchema() {
     url: "https://www.summithousenapa.com",
     logo: {
       "@type": "ImageObject",
-      url: "https://www.summithousenapa.com/images/twilight-aerial-aframe-glowing.jpg",
+      url: "https://www.summithousenapa.com/images/summit-house-logo.svg",
+      width: 315,
+      height: 96,
     },
     image: "https://www.summithousenapa.com/images/twilight-aerial-aframe-glowing.jpg",
     description: SUMMIT_HOUSE_DESCRIPTION,

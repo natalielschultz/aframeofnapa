@@ -256,6 +256,39 @@ export default function PressPage() {
         </div>
       </section>
 
+      {/* Logo download */}
+      <section className="bg-white py-16 md:py-20 border-t border-charcoal/10">
+        <div className="mx-auto max-w-3xl px-6 md:px-12">
+          <FadeIn>
+            <SectionHeading
+              title="Logo"
+              subtitle="Vector brand mark for editorial use. SVG format, scalable to any size."
+            />
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="mt-10 flex flex-col items-center gap-6">
+              <div className="bg-parchment px-12 py-10 w-full flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/summit-house-logo.svg"
+                  alt="Summit House Napa logo"
+                  width={315}
+                  height={96}
+                  className="max-w-full h-auto"
+                />
+              </div>
+              <a
+                href="/images/summit-house-logo.svg"
+                download
+                className="font-sans text-xs uppercase tracking-[0.18em] text-brass hover:text-ink transition-colors"
+              >
+                Download SVG &rarr;
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* Photography */}
       <section className="bg-parchment py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
