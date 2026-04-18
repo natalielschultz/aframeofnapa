@@ -8,19 +8,19 @@ import { getAllImages } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Gallery — Summit House Napa",
   description:
-    "Browse all photos of Summit House Napa — a fully restored 1969 A-frame cabin on Mount Veeder with panoramic views, sunken conversation pit, hot tub, and two acres of private redwood forest.",
+    "Browse all photos of Summit House Napa — a fully restored 1969 A-frame rental on Mount Veeder with panoramic views, sunken conversation pit, hot tub, and two acres of private redwood forest.",
   alternates: { canonical: "/gallery" },
   openGraph: {
     title: "Gallery — Summit House Napa",
     description:
-      "Browse all photos of Summit House Napa — a restored 1969 A-frame cabin on Mount Veeder, Napa Valley.",
+      "Browse all photos of Summit House Napa — a restored 1969 A-frame rental on Mount Veeder, Napa Valley.",
     images: [{ url: "/images/twilight-aframe-facade-front.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Gallery — Summit House Napa",
     description:
-      "Browse all photos of Summit House Napa — a restored 1969 A-frame cabin on Mount Veeder, Napa Valley.",
+      "Browse all photos of Summit House Napa — a restored 1969 A-frame rental on Mount Veeder, Napa Valley.",
     images: ["/images/twilight-aframe-facade-front.jpg"],
   },
 };

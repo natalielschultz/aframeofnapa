@@ -326,8 +326,8 @@ export default function ExperiencePage() {
                 Mount Veeder is one of Napa Valley&rsquo;s most celebrated
                 appellations — known for small-production wines of extraordinary
                 depth and character. Several acclaimed wineries sit within
-                minutes of the property, and downtown Napa is just fifteen
-                minutes down the mountain.
+                minutes of the property, and downtown Napa is just 15 minutes
+                down the mountain.
               </p>
               <p className="font-sans text-base text-text-muted leading-relaxed max-w-2xl">
                 The beauty of living above the valley, not in it, is that

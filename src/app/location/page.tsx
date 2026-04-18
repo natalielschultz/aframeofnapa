@@ -87,7 +87,7 @@ export default function LocationPage() {
             <FadeIn delay={0.2} className="lg:col-span-8">
               <div className="space-y-6 font-sans text-base md:text-lg text-text leading-relaxed">
                 <p>
-                  Mount Veeder is the most remote and rugged of Napa Valley's sixteen
+                  Mount Veeder is the most remote and rugged of Napa Valley&rsquo;s 16
                   American Viticultural Areas. Rising to over 2,600 feet, it is a landscape
                   defined by volcanic soils, old-growth redwood forests, and a dramatic
                   topography that has drawn winemakers, artists, and seekers of solitude for

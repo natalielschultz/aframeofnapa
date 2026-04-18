@@ -6,7 +6,7 @@
 
 ## Welcome
 
-Welcome to Summit House Napa — a renovated 1969 A-frame cabin nestled on 2 acres of private mountain forest on Mount Veeder. You're surrounded by ancient redwoods, with a meditation trail through the woods, an outdoor shower under the trees, a zen garden, an infrared sauna, and a hot tub on the back deck.
+Welcome to Summit House Napa — a renovated 1969 A-frame nestled on 2 acres of private mountain forest on Mount Veeder. You're surrounded by ancient redwoods, with a meditation trail through the woods, an outdoor shower under the trees, a zen garden, an infrared sauna, and a hot tub on the back deck.
 
 This is your space to slow down and settle in. If you need anything at all during your stay — a recommendation, help with something in the house, or just a question — reach out anytime. We're here for you.
 
@@ -247,7 +247,7 @@ A first aid kit and fire extinguisher are in the utility closet by the kitchen. 
 
 ### Groceries & Delivery
 
-Delivery services like **Instacart, DoorDash, and Uber Eats** do deliver to the property. You can order groceries, meals, and essentials directly to the cabin.
+Delivery services like **Instacart, DoorDash, and Uber Eats** do deliver to the property. You can order groceries, meals, and essentials directly to the residence.
 
 The nearest grocery store is **Brown's Valley Market**, about a 15-minute drive down the mountain.
 

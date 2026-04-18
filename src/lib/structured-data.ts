@@ -5,6 +5,14 @@ export const LODGING_ID = "https://www.summithousenapa.com/#lodging";
 export const VACATION_RENTAL_ID = "https://www.summithousenapa.com/#vacation-rental";
 export const WEBSITE_ID = "https://www.summithousenapa.com/#website";
 
+// Single canonical brand description, reused across all schemas.
+// Tuned for AI answer-engine snippet extraction: self-contained sentence,
+// front-loads entity name + type + location, includes the unique 31-night
+// differentiator early, and hits every customer segment (remote work,
+// wellness, design, wine country, privacy) without becoming a list.
+export const SUMMIT_HOUSE_DESCRIPTION =
+  "Summit House is a private 1969 A-frame rental at the summit of Mount Veeder in Napa Valley, offered exclusively for 31-night-minimum residencies. Three bedrooms on several private acres of ancient redwoods at 1,800 feet, with hot tub, infrared sauna, meditation trail, and Starlink internet — 15 minutes from downtown Napa.";
+
 // Update this list as press, listings, or social profiles come online.
 // Each entry strengthens entity recognition across AI search platforms.
 const SAME_AS = [
@@ -26,8 +34,7 @@ export function getOrganizationSchema() {
       url: "https://www.summithousenapa.com/images/twilight-aerial-aframe-glowing.jpg",
     },
     image: "https://www.summithousenapa.com/images/twilight-aerial-aframe-glowing.jpg",
-    description:
-      "Summit House is a private 1969 A-frame rental at the summit of Mount Veeder in Napa Valley, offered exclusively for 31-night-minimum residencies. Several private acres of ancient redwoods at 1,800 feet elevation.",
+    description: SUMMIT_HOUSE_DESCRIPTION,
     email: "stay@summithousenapa.com",
     address: {
       "@type": "PostalAddress",
@@ -61,8 +68,7 @@ export function getLodgingBusinessSchema(reviewStats?: { rating: string; count: 
     "@type": "LodgingBusiness",
     "@id": LODGING_ID,
     name: "Summit House Napa",
-    description:
-      "Summit House is a private residence at the summit of Mount Veeder, Napa Valley. A fully renovated 1969 home on several private acres of ancient redwoods. Monthly residencies with rates starting at 31 nights. Includes hot tub, sauna, outdoor shower, meditation trail, Starlink internet, and a fully equipped kitchen.",
+    description: SUMMIT_HOUSE_DESCRIPTION,
     url: "https://www.summithousenapa.com",
     email: "stay@summithousenapa.com",
     image: "https://www.summithousenapa.com/images/twilight-aerial-aframe-glowing.jpg",
@@ -104,8 +110,7 @@ export function getVacationRentalSchema(reviewStats?: { rating: string; count: n
     "@type": "VacationRental",
     "@id": VACATION_RENTAL_ID,
     name: "Summit House Napa A-Frame Residence",
-    description:
-      "A fully renovated 1969 A-frame residence at the summit of Mount Veeder with hot tub, sauna, and private meditation trail. Sleeps 11 on several private acres of ancient redwoods. Monthly residencies in Napa Valley.",
+    description: SUMMIT_HOUSE_DESCRIPTION,
     url: "https://www.summithousenapa.com/property",
     image: "https://www.summithousenapa.com/images/twilight-aerial-aframe-glowing.jpg",
     parentOrganization: { "@id": ORG_ID },

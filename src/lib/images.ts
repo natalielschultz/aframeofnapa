@@ -65,7 +65,7 @@ const IMAGES = {
   // ── Exterior ────────────────────────────────────────────
   "exterior-front-driveway": {
     src: "/images/exterior-front-driveway.jpg",
-    alt: "A-frame cabin viewed from the driveway, framed by lush greenery and redwoods",
+    alt: "A-frame rental viewed from the driveway, framed by lush greenery and redwoods",
     category: "exterior",
   },
   "entry-staircase-ivy": {
@@ -358,7 +358,7 @@ const IMAGES = {
   },
   "infrared-sauna": {
     src: "/images/infrared-sauna.jpg",
-    alt: "Cedar infrared sauna cabin tucked into the garden with brick pathway and lush plantings",
+    alt: "Cedar infrared sauna structure tucked into the garden with brick pathway and lush plantings",
     category: "wellness",
   },
   "garden-mosaic-table-bbq": {

@@ -6,26 +6,27 @@ import CTABanner from "@/components/sections/CTABanner";
 import Image from "next/image";
 import { AMENITIES, PROPERTY } from "@/lib/constants";
 import { getVacationRentalSchema, getBreadcrumbSchema } from "@/lib/structured-data";
+import { getReviewStats } from "@/lib/reviews";
 import PropertyNavChips from "@/components/ui/PropertyNavChips";
 import PropertyGallery from "@/components/sections/PropertyGallery";
 import { getImage } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "The Property — Restored 1969 A-Frame Cabin | Summit House Napa",
+  title: "The Property — Restored 1969 A-Frame Rental | Summit House Napa",
   description:
-    "Tour a fully restored 1969 A-frame cabin on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, sunken conversation pit, and panoramic Napa Valley views.",
+    "Tour a fully restored 1969 A-frame rental on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, sunken conversation pit, and panoramic Napa Valley views.",
   alternates: { canonical: "/property" },
   openGraph: {
-    title: "The Property — Restored 1969 A-Frame Cabin | Summit House Napa",
+    title: "The Property — Restored 1969 A-Frame Rental | Summit House Napa",
     description:
-      "Tour a fully restored 1969 A-frame cabin on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, and panoramic Napa Valley views.",
+      "Tour a fully restored 1969 A-frame rental on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, and panoramic Napa Valley views.",
     images: [{ url: getImage("aerial-aframe-facade").src, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Property — Restored 1969 A-Frame Cabin | Summit House Napa",
+    title: "The Property — Restored 1969 A-Frame Rental | Summit House Napa",
     description:
-      "Tour a fully restored 1969 A-frame cabin on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, and panoramic Napa Valley views.",
+      "Tour a fully restored 1969 A-frame rental on Mount Veeder. 3BR/2.5BA, 2 acres, hot tub, infrared sauna, and panoramic Napa Valley views.",
     images: [getImage("aerial-aframe-facade").src],
   },
 };
@@ -89,7 +90,7 @@ const roomTour = [
     id: "outdoor",
     title: "Outdoor Spaces",
     description:
-      "The property extends far beyond the cabin walls. A wraparound front deck offers panoramic views of Napa Valley — the kind of vista that changes with every hour and every season. The zen garden, with its handmade mosaic dining table, is a place for morning coffee or afternoon reading. Two fire pit lounges anchor the evenings. And everywhere, the redwoods stand watch, ancient and still.",
+      "The property extends far beyond the residence itself. A wraparound front deck offers panoramic views of Napa Valley — the kind of vista that changes with every hour and every season. The zen garden, with its handmade mosaic dining table, is a place for morning coffee or afternoon reading. Two fire pit lounges anchor the evenings. And everywhere, the redwoods stand watch, ancient and still.",
     imageLabel: getImage("deck-full-aframe-front").alt,
     image: getImage("deck-full-aframe-front").src,
     direction: "right" as const,
@@ -127,12 +128,13 @@ const galleryItems = [
   { label: getImage("infrared-sauna").alt, image: getImage("infrared-sauna").src },
 ];
 
-export default function PropertyPage() {
+export default async function PropertyPage() {
+  const reviewStats = await getReviewStats();
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(getVacationRentalSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getVacationRentalSchema(reviewStats)) }}
       />
       <script
         type="application/ld+json"
@@ -142,8 +144,8 @@ export default function PropertyPage() {
       <Hero
         image={getImage("aerial-aframe-deck-closeup").src}
         title="The Property"
-        subtitle="A fully restored 1969 A-frame cabin, reimagined for the modern long-stay guest."
-        alt="Aerial view of the restored 1969 A-frame cabin and wraparound deck on Mount Veeder"
+        subtitle="A fully restored 1969 A-frame rental, reimagined for the modern long-stay guest."
+        alt="Aerial view of the restored 1969 A-frame and wraparound deck on Mount Veeder"
         overlayOpacity={0.4}
       />
 
