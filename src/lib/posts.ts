@@ -67,4 +67,5 @@ export const STATIC_ROUTES: { path: string; priority: number; changeFrequency: "
   { path: "/remote-work-retreat-napa-valley", priority: 0.8, changeFrequency: "weekly" },
   { path: "/mount-veeder-napa-area-guide", priority: 0.8, changeFrequency: "weekly" },
   { path: "/blog", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/press", priority: 0.5, changeFrequency: "monthly" },
 ];

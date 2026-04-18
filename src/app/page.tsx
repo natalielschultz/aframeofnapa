@@ -3,6 +3,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/animation/FadeIn";
 import CTABanner from "@/components/sections/CTABanner";
+import FeaturedIn from "@/components/sections/FeaturedIn";
 import Image from "next/image";
 import Link from "next/link";
 import { REVIEWS, PROPERTY } from "@/lib/constants";
@@ -224,6 +225,10 @@ export default async function Home() {
           </FadeIn>
         </div>
       </section>
+
+      {/* Featured In — renders null while FEATURED_IN is empty;
+          fills in automatically as press features land. */}
+      <FeaturedIn />
 
       {/* 8. CTA Banner */}
       <CTABanner

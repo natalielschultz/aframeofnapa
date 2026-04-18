@@ -47,6 +47,12 @@ export default function Footer() {
               >
                 Journal
               </Link>
+              <Link
+                href="/press"
+                className="text-sm text-parchment/80 transition-colors duration-200 hover:text-sage"
+              >
+                Press
+              </Link>
             </nav>
           </div>
 
