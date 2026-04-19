@@ -23,11 +23,21 @@ export const SUMMIT_HOUSE_DESCRIPTION =
   "Summit House is a private 1969 A-frame rental at the summit of Mount Veeder in Napa Valley, offered exclusively for 31-night-minimum residencies. Three bedrooms on several private acres of ancient redwoods at 1,800 feet, with hot tub, infrared sauna, meditation trail, and Starlink internet — 15 minutes from downtown Napa.";
 
 // Update this list as press, listings, or social profiles come online.
-// Each entry strengthens entity recognition across AI search platforms.
+// Each entry strengthens entity recognition across AI search platforms by
+// telling them "this business is the same entity as the one at these URLs."
 const SAME_AS = [
+  // Social
   "https://www.instagram.com/summithousenapa",
+
+  // OTA listings — add as each goes live
+  "https://www.airbnb.com/rooms/1661521852780396100",
+  // TODO: add VRBO listing URL once live — format: https://www.vrbo.com/<listing-id>
+  // TODO: add Furnished Finder listing URL once live — format: https://www.furnishedfinder.com/property/<listing-id>
+
+  // Business profiles
   // TODO: add Google Business Profile URL once confirmed
-  // TODO: add press URLs as features land (Dwell, AFAR, Cup of Jo, etc.)
+
+  // Press — add as features land (Dwell, AFAR, Cup of Jo, etc.)
 ];
 
 export function getOrganizationSchema() {
