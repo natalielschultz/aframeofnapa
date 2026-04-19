@@ -102,21 +102,22 @@ export default function LocationPage() {
             <FadeIn delay={0.2} className="lg:col-span-8">
               <div className="space-y-6 font-sans text-base md:text-lg text-text leading-relaxed">
                 <p>
-                  Mount Veeder is the most remote and rugged of Napa Valley&rsquo;s 16
-                  American Viticultural Areas. Rising to over 2,600 feet, it is a landscape
-                  defined by volcanic soils, old-growth redwood forests, and a dramatic
-                  topography that has drawn winemakers, artists, and seekers of solitude for
-                  more than a century. The appellation is home to fewer than forty wineries —
-                  many of them boutique operations producing some of the most sought-after
-                  Cabernet Sauvignon in California.
-                </p>
-                <p>
-                  At elevation, the fog that blankets the valley floor rarely reaches the
-                  mountain. Mornings are bright and crisp; evenings are impossibly still. The
-                  air is cooler, the light is sharper, and the silence is absolute. It is a
-                  place where time moves differently — where a single afternoon can feel like
-                  a week, and a month can feel like a lifetime. This is the Napa Valley that
-                  most visitors never see: wild, unhurried, and profoundly private.
+                  Summit House Napa sits at approximately 1,800 feet of
+                  elevation on Mount Veeder, a ridge in the Mayacamas
+                  Mountains of western Napa County, California. The property
+                  is 15 minutes by car from downtown Napa, reached by Redwood
+                  Road and Mount Veeder Road as they climb through the range.
+                  Mount Veeder is one of Napa Valley&rsquo;s 16 American
+                  Viticultural Areas, distinguished by volcanic soils,
+                  mature Coast Redwood (<em>Sequoia sempervirens</em>)
+                  forest, and a microclimate that sits above the fog line
+                  that typically settles on the valley floor &mdash; mornings
+                  here are brighter, evenings cooler, and summer temperatures
+                  several degrees lower than in the town below. The
+                  three-bedroom, 2.5-bathroom 1969 A-frame rental occupies
+                  several private acres of redwoods on the mountain, with
+                  private access to the Enchanted Hills Waterfall trail and
+                  panoramic views of Napa Valley.
                 </p>
                 <Link
                   href="/mount-veeder-napa-area-guide"

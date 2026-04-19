@@ -113,6 +113,31 @@ export default function ExperiencePage() {
         alt="Deck lounge chairs overlooking Napa Valley at sunset from Mount Veeder"
       />
 
+      {/* Answer Block — GEO-optimized opening passage for AI citation */}
+      <section className="bg-white py-16 md:py-20">
+        <div className="mx-auto max-w-4xl px-6 md:px-12">
+          <FadeIn>
+            <p className="font-sans text-base md:text-lg text-text leading-relaxed">
+              The experience at Summit House is organized around the rhythms
+              of an extended stay: Napa County short-term rental rules
+              require a 31-night minimum at this Mount Veeder property, and
+              the daily cadence reflects that horizon. Guests wake to
+              birdsong at approximately 1,800 feet of elevation and step onto
+              a private meditation trail that winds through several acres of
+              ancient Coast Redwoods to the Enchanted Hills Waterfall. The
+              wellness suite includes a Hot Spring Prodigy hot tub that seats
+              six, an outdoor infrared sauna, and an open-air outdoor shower
+              beneath the redwood canopy. Afternoons move between the
+              wraparound front deck, the zen garden, and a dedicated
+              workspace served by Starlink satellite internet. Evenings
+              gather at one of two fire pit lounges or the sunken
+              conversation pit with stone fireplace. Downtown Napa is 15
+              minutes away.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* 2. Day Timeline */}
       <section className="bg-white py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
@@ -207,7 +232,7 @@ export default function ExperiencePage() {
                 </h2>
                 <div className="w-16 h-px bg-brass" aria-hidden="true" />
                 <p className="font-sans text-base md:text-lg text-parchment/70 leading-relaxed">
-                  From the property, a private trail winds through old-growth
+                  From the property, a private trail winds through mature
                   redwoods to Enchanted Hills Waterfall — a hidden cascade known
                   only to the handful of residents who share this ridge. The walk
                   takes fifteen minutes each way, and it will become the ritual

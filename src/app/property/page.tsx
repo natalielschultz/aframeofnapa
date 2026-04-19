@@ -161,6 +161,30 @@ export default async function PropertyPage() {
       {/* Nav Chips */}
       <PropertyNavChips />
 
+      {/* Answer Block — GEO-optimized opening passage for AI citation */}
+      <section className="bg-white py-16 md:py-20">
+        <div className="mx-auto max-w-4xl px-6 md:px-12">
+          <FadeIn>
+            <p className="font-sans text-base md:text-lg text-text leading-relaxed">
+              Summit House is a three-bedroom, 2.5-bathroom 1969 A-frame
+              residence on Mount Veeder in western Napa County, California,
+              fully renovated in 2026 and sleeping up to 11 guests. The
+              architecture centers on a soaring double-height great room
+              beneath the original triangular roofline, with floor-to-ceiling
+              windows that open to several private acres of ancient Coast
+              Redwoods. A sunken conversation pit with a stone fireplace
+              anchors the main level; a fully equipped modern kitchen, a
+              dedicated workspace with Starlink satellite internet, a 72-inch
+              smart TV, and Sonos whole-house sound round out the interior.
+              Outside, a wraparound front deck delivers panoramic Napa Valley
+              views, and a zen garden with a mosaic dining table connects the
+              residence to the forest. The property holds a 4.88 guest rating
+              and accepts 31-night minimum stays starting at $12,000.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* 2. Quick Specs */}
       <section className="bg-ink py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
