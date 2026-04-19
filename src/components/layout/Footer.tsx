@@ -1,6 +1,11 @@
 import Link from "next/link";
-import { NAV_LINKS, SITE } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import Logo from "@/components/ui/Logo";
+
+const FOOTER_COL_CLASS =
+  "text-sm text-parchment/80 transition-colors duration-200 hover:text-sage";
+const FOOTER_HEADING_CLASS =
+  "mb-4 text-xs font-medium uppercase tracking-widest text-text-muted";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,8 +13,8 @@ export default function Footer() {
   return (
     <footer className="bg-ink text-parchment">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        {/* Top section */}
-        <div className="grid gap-12 md:grid-cols-3">
+        {/* Row 1: brand + contact */}
+        <div className="grid gap-12 md:grid-cols-2">
           {/* Logo & tagline */}
           <div>
             <Link href="/" className="inline-block">
@@ -20,47 +25,9 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Nav links */}
-          <div>
-            <h3 className="mb-4 text-xs font-medium uppercase tracking-widest text-text-muted">
-              Explore
-            </h3>
-            <nav className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-parchment/80 transition-colors duration-200 hover:text-sage"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                href="/remote-work-retreat-napa-valley"
-                className="text-sm text-parchment/80 transition-colors duration-200 hover:text-sage"
-              >
-                Remote Work
-              </Link>
-              <Link
-                href="/blog"
-                className="text-sm text-parchment/80 transition-colors duration-200 hover:text-sage"
-              >
-                Journal
-              </Link>
-              <Link
-                href="/press"
-                className="text-sm text-parchment/80 transition-colors duration-200 hover:text-sage"
-              >
-                Press
-              </Link>
-            </nav>
-          </div>
-
           {/* Contact */}
-          <div>
-            <h3 className="mb-4 text-xs font-medium uppercase tracking-widest text-text-muted">
-              Contact
-            </h3>
+          <div className="md:text-right">
+            <h3 className={FOOTER_HEADING_CLASS}>Contact</h3>
             <div className="flex flex-col gap-3 text-sm">
               <a
                 href={`mailto:${SITE.email}`}
@@ -77,6 +44,41 @@ export default function Footer() {
                 @{SITE.instagram}
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Row 2: navigation columns */}
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h3 className={FOOTER_HEADING_CLASS}>The Property</h3>
+            <nav className="flex flex-col gap-3">
+              <Link href="/property" className={FOOTER_COL_CLASS}>Property</Link>
+              <Link href="/experience" className={FOOTER_COL_CLASS}>Experience</Link>
+              <Link href="/location" className={FOOTER_COL_CLASS}>Location</Link>
+              <Link href="/gallery" className={FOOTER_COL_CLASS}>Gallery</Link>
+            </nav>
+          </div>
+          <div>
+            <h3 className={FOOTER_HEADING_CLASS}>Planning Your Stay</h3>
+            <nav className="flex flex-col gap-3">
+              <Link href="/availability" className={FOOTER_COL_CLASS}>Availability</Link>
+              <Link href="/reviews" className={FOOTER_COL_CLASS}>Reviews</Link>
+              <Link href="/about" className={FOOTER_COL_CLASS}>Our Story</Link>
+            </nav>
+          </div>
+          <div>
+            <h3 className={FOOTER_HEADING_CLASS}>Journal &amp; Press</h3>
+            <nav className="flex flex-col gap-3">
+              <Link href="/blog" className={FOOTER_COL_CLASS}>Journal</Link>
+              <Link href="/mount-veeder-napa-area-guide" className={FOOTER_COL_CLASS}>Mount Veeder Guide</Link>
+              <Link href="/press" className={FOOTER_COL_CLASS}>Press</Link>
+            </nav>
+          </div>
+          <div>
+            <h3 className={FOOTER_HEADING_CLASS}>Extended Stays</h3>
+            <nav className="flex flex-col gap-3">
+              <Link href="/remote-work-retreat-napa-valley" className={FOOTER_COL_CLASS}>Remote Work Retreats</Link>
+            </nav>
           </div>
         </div>
 

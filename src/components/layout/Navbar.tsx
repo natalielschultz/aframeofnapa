@@ -1,14 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { NAV_LINKS, SITE } from "@/lib/constants";
+import { NAV_LINKS, DISCOVER_LINKS, SITE } from "@/lib/constants";
 import Logo from "@/components/ui/Logo";
 import { trackEvent } from "@/lib/analytics";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [discoverOpen, setDiscoverOpen] = useState(false);
+  const discoverRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
 
   const headerBg = useTransform(
@@ -34,6 +36,25 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
+  // Close Discover dropdown on outside click or Escape
+  useEffect(() => {
+    if (!discoverOpen) return;
+    function handleClick(e: MouseEvent) {
+      if (discoverRef.current && !discoverRef.current.contains(e.target as Node)) {
+        setDiscoverOpen(false);
+      }
+    }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setDiscoverOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, [discoverOpen]);
+
   return (
     <>
       <motion.header
@@ -57,6 +78,53 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Discover dropdown */}
+            <div className="relative" ref={discoverRef}>
+              <button
+                type="button"
+                onClick={() => setDiscoverOpen((v) => !v)}
+                onMouseEnter={() => setDiscoverOpen(true)}
+                aria-haspopup="menu"
+                aria-expanded={discoverOpen}
+                className="font-serif flex items-center gap-1.5 text-xs uppercase tracking-[1.8px] text-charcoal transition-colors duration-200 hover:text-ink"
+              >
+                Discover
+                <motion.span
+                  animate={{ rotate: discoverOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-[10px] leading-none"
+                  aria-hidden="true"
+                >
+                  &#9662;
+                </motion.span>
+              </button>
+              <AnimatePresence>
+                {discoverOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.18 }}
+                    onMouseLeave={() => setDiscoverOpen(false)}
+                    role="menu"
+                    className="absolute right-0 top-full mt-3 min-w-[14rem] bg-parchment py-2 shadow-lg ring-1 ring-ink/5"
+                  >
+                    {DISCOVER_LINKS.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        role="menuitem"
+                        onClick={() => setDiscoverOpen(false)}
+                        className="block px-5 py-2.5 font-serif text-xs uppercase tracking-[1.8px] text-charcoal transition-colors duration-200 hover:bg-ink/5 hover:text-ink"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Desktop CTA */}
@@ -106,7 +174,7 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-parchment lg:hidden"
           >
-            <nav className="flex flex-col items-center gap-8">
+            <nav className="flex flex-col items-center gap-6">
               {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -124,11 +192,39 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, delay: NAV_LINKS.length * 0.05 }}
+                className="w-16 h-px bg-brass"
+                aria-hidden="true"
+              />
+
+              {DISCOVER_LINKS.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.3, delay: (NAV_LINKS.length + 1 + i) * 0.05 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="font-serif text-base uppercase tracking-[1.8px] text-charcoal"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.3, delay: NAV_LINKS.length * 0.05 }}
+                transition={{ duration: 0.3, delay: (NAV_LINKS.length + DISCOVER_LINKS.length + 2) * 0.05 }}
               >
                 <Link
                   href="/availability#inquiry"

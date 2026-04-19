@@ -18,6 +18,16 @@ export const NAV_LINKS = [
   { label: "Our Story", href: "/about" },
 ] as const;
 
+// Secondary pages surfaced via the desktop "Discover" dropdown and the
+// mobile hamburger overlay. Also used by the Footer's Journal & Press and
+// Extended Stays columns, so both header and footer stay in sync.
+export const DISCOVER_LINKS = [
+  { label: "Journal", href: "/blog" },
+  { label: "Mount Veeder Guide", href: "/mount-veeder-napa-area-guide" },
+  { label: "Press", href: "/press" },
+  { label: "Remote Work Retreats", href: "/remote-work-retreat-napa-valley" },
+] as const;
+
 export const PROPERTY = {
   bedrooms: 3,
   bathrooms: 2.5,
