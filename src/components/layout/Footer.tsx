@@ -81,10 +81,24 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="mt-12 border-t border-parchment/10 pt-8">
+        <div className="mt-12 flex flex-col gap-4 border-t border-parchment/10 pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-xs text-text-muted">
             &copy; {currentYear} {SITE.name}. All rights reserved.
           </p>
+          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-xs">
+            <Link
+              href="/privacy-policy"
+              className="text-text-muted transition-colors duration-200 hover:text-sage"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-and-conditions"
+              className="text-text-muted transition-colors duration-200 hover:text-sage"
+            >
+              Terms &amp; Conditions
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>
