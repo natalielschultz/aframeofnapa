@@ -103,12 +103,34 @@ export default async function Home() {
           confirmed guests only.
         </p>
         <p>
-          Monthly residencies at Summit House start at $10,000 per 31-night
-          stay and vary by season, with peak pricing during Napa Valley
-          harvest (September through October). Rates include utilities,
-          Starlink satellite internet, and use of every amenity on the
-          property. The 31-night minimum is required under Napa County&rsquo;s
-          short-term rental ordinance for unincorporated Mount Veeder.
+          Monthly residencies at Summit House start at $12,000 per 31-night
+          stay and range up to $18,000 during Napa Valley harvest season
+          (September through October, the peak of peak season). Off-peak
+          rates (December through March) range from $12,000 to $14,000 per
+          31-night stay. Rates include utilities, Starlink satellite
+          internet, and use of every amenity on the property.
+        </p>
+        <p>
+          The 31-night minimum exists because Napa heavily regulates
+          short-term rentals. The City of Napa defines vacation rentals as
+          stays under 31 days, limits them to 41 non-hosted permits citywide
+          (all of which are currently issued, with no new applications
+          accepted), and prohibits new unpermitted short-term rentals. Napa
+          County applies comparable restrictions to unincorporated areas
+          including Mount Veeder. Summit House operates as a legal
+          long-term residency — stays of 31 nights or longer fall outside
+          the short-term rental framework, which is why monthly is the
+          only option.
+        </p>
+        <p>
+          Compared with valley floor rentals that often charge $30,000 to
+          $50,000 per month, Summit House is positioned for guests who want
+          the flexibility of a full-month contract at a lower monthly rate.
+          A typical use case is a family taking a two-week Napa trip at
+          what amounts to under $400 per night, with the remaining two
+          weeks available for extended stays or additional guests. Other
+          guests use the month as a rotating weekender for a family or
+          friend group over the course of a month or two, seasonally.
         </p>
         <p>
           Summit House has three bedrooms and 2.5 bathrooms, with maximum
