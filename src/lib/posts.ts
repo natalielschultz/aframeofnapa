@@ -17,6 +17,13 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "ancient-redwoods-mount-veeder",
+    title: "The Napa Redwoods: Mount Veeder's Ancient Forest",
+    excerpt: "A field guide to California's farthest inland stand of Coast Redwood — history, species, and where to experience the forest today.",
+    date: "2026-04-18",
+    image: "/images/aerial-redwoods-overview.jpg",
+  },
+  {
     slug: "napa-valley-locals-guide",
     title: "Napa Valley Locals Guide",
     excerpt: "Where to eat, drink, and shop — a born-and-raised native's picks.",
